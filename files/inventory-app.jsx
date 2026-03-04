@@ -63,6 +63,7 @@ const CATEGORY_COLORS = {
   "Scrubs & Apparel — Women": { bg: "#ffffff", accent: "#002639", light: "#002639" },
 };
 
+
 export default function App() {
   const [inventory, setInventory] = useState(() => {
     const saved = localStorage.getItem("sunInventory");
