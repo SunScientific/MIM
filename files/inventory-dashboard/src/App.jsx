@@ -63,6 +63,7 @@ const CATEGORY_COLORS = {
   "Scrubs & Apparel — Women": { bg: "#ffffff", accent: "#002639", light: "#002639" },
 };
 
+
 export default function App() {
   const [inventory, setInventory] = useState(() => {
     const saved = localStorage.getItem("sunInventory");
@@ -133,7 +134,7 @@ export default function App() {
   }, [inventory, activeCategory, search]);
 
   const totalItems = Object.values(inventory).flat().length;
-  const lowStockCount = Object.values(inventory).flat().filter(i => i.qty < 10).length;
+  const lowStockCount = Object.values(inventory).flat().filter(i => i.qty < 20).length;
   const totalUnits = Object.values(inventory).flat().reduce((s, i) => s + i.qty, 0);
 
   const handleDeduct = () => {
@@ -416,7 +417,7 @@ export default function App() {
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
                 {filtered.map(item => {
-                  const isLow = item.qty > 0 && item.qty < 10;
+                  const isLow = item.qty > 0 && item.qty < 20;
                   const isOut = item.qty === 0;
                   return (
                     <div
@@ -461,7 +462,7 @@ export default function App() {
           <div style={{ fontWeight: 600, marginBottom: 12, color: "#002639", fontSize: 14 }}>+ Create New Category</div>
           <div style={{ display: "flex", gap: 10 }}>
             <input className="input-field" placeholder="Category name..." value={newCategory} onChange={e => setNewCategory(e.target.value)} style={{ maxWidth: 300 }} onKeyDown={e => e.key === "Enter" && handleAddCategory()} />
-            <button className="btn-primary" onClick={handleAddCategory}>Create</button>
+            <button className="btn-primary" style={{ background: "#002639", color: "#ffffff" }} onClick={handleAddCategory}>Create</button>
           </div>
         </div>
       </div>
