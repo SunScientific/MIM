@@ -67,8 +67,8 @@ const CATEGORY_COLORS = {
 // 👥 USERS LIST
 // ─────────────────────────────────────────────────────────────
 const USERS = [
-  { username: "admin", password: "sunscientific2024" },
-  { username: "sanat", password: "stockadmin" },
+  { username: "admin", password: "Aerowrap@145" },
+  { username: "sanat", password: "Aerowrap@123" },
 ];
 
 export default function App() {
