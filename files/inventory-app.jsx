@@ -63,13 +63,12 @@ const CATEGORY_COLORS = {
   "Scrubs & Apparel — Women": { bg: "#ffffff", accent: "#002639", light: "#002639" },
 };
 
-
-// -------------------------------------------------------------
-// ?? USERS LIST
-// -------------------------------------------------------------
+// ─────────────────────────────────────────────────────────────
+// 👥 USERS LIST
+// ─────────────────────────────────────────────────────────────
 const USERS = [
-  { username: 'admin',   password: 'sunscientific2024' },
-  { username: 'sanat',   password: 'stockadmin'        },
+  { username: "admin", password: "sunscientific2024" },
+  { username: "sanat", password: "stockadmin" },
 ];
 
 export default function App() {
@@ -344,7 +343,7 @@ export default function App() {
 
       {/* LOGIN SCREEN */}
       {!loggedIn && (
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyCenter: "center", padding: 20 }}>
           <div style={{ background: "#ffffff", borderRadius: 20, padding: "40px 36px", width: "100%", maxWidth: 400, boxShadow: "0 24px 80px rgba(0,0,0,0.4)" }}>
             <div style={{ textAlign: "center", marginBottom: 28 }}>
               <img src={logo} alt="Sun Scientific" style={{ height: 48, objectFit: "contain", marginBottom: 14 }} />
@@ -683,7 +682,7 @@ export default function App() {
                     <div key={i} style={{ background: "#ffffff", border: "1px solid #54bfcf", borderRadius: 8, padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <div>
                         <span style={{ background: "#ffffff", border: `1px solid ${entry.type === "deduct" ? "#f6ac40" : "#54bfcf"}`, color: entry.type === "deduct" ? "#f6ac40" : "#54bfcf", fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 20, marginRight: 8 }}>
-                          {entry.type === "deduct" ? "−" : "+"}{entry.qty}
+                          {entry.type === "deduct" ? "-" : "+"}{entry.qty}
                         </span>
                         <span style={{ fontSize: 13, fontWeight: 500, color: "#002639" }}>{entry.item}</span>
                       </div>
@@ -695,13 +694,13 @@ export default function App() {
             </div>
           </div>
         )}
+
         {toast && (
           <div className="toast" style={{ background: toast.type === "error" ? "#f6ac40" : toast.type === "info" ? "#54bfcf" : "#002639", color: "#ffffff" }}>
             {toast.msg}
           </div>
         )}
-      </div>
-    </>)}
+      </>)}
     </div>
   );
 }
