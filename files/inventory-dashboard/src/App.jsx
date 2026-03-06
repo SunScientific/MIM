@@ -3,92 +3,92 @@ import logo from "./assets/newlogo.png";
 
 const initialInventory = {
   "Branded Merchandise": [
-    { id: 1, name: "Keychains", qty: 125 },
-    { id: 2, name: "Blue Tote Bag (Standard)", qty: 150 },
-    { id: 3, name: "Branded Tape", qty: 5 },
-    { id: 4, name: "Pens", qty: 100 },
-    { id: 5, name: "Tape Measures", qty: 3050 },
-    { id: 6, name: "Canvas White Tote Bag", qty: 2 },
-    { id: 7, name: "Hats", qty: 12 },
-    { id: 8, name: "Bottle", qty: 7 },
-    { id: 9, name: "Blue Tote Bag (Dvx)", qty: 50 },
-    { id: 10, name: "Luggage Tags", qty: 50 },
-    { id: 11, name: "Speakers", qty: 0 },
-    { id: 12, name: "Circular Stickers for Sealing", qty: 2 },
-    { id: 13, name: "Die-Cut Leg Sticker", qty: 0 },
-    { id: 14, name: "Packing Tape", qty: 0 },
-    { id: 15, name: "Body Tape Measure", qty: 0 },
+    { id: 1, name: "Keychains", qty: 125, subCategory: "Merch" },
+    { id: 2, name: "Blue Tote Bag (Standard)", qty: 150, subCategory: "Hand Bags" },
+    { id: 3, name: "Branded Tape", qty: 5, subCategory: "Tapes" },
+    { id: 4, name: "Pens", qty: 100, subCategory: "Merch" },
+    { id: 5, name: "Tape Measures", qty: 3050, subCategory: "Tape Measures" },
+    { id: 6, name: "Canvas White Tote Bag", qty: 2, subCategory: "Hand Bags" },
+    { id: 7, name: "Hats", qty: 12, subCategory: "Merch" },
+    { id: 8, name: "Bottle", qty: 7, subCategory: "Merch" },
+    { id: 9, name: "Blue Tote Bag (Dvx)", qty: 50, subCategory: "Hand Bags" },
+    { id: 10, name: "Luggage Tags", qty: 50, subCategory: "Merch" },
+    { id: 11, name: "Speakers", qty: 0, subCategory: "Merch" },
+    { id: 12, name: "Circular Stickers for Sealing", qty: 2, subCategory: "Stickers" },
+    { id: 13, name: "Die-Cut Leg Sticker", qty: 0, subCategory: "Stickers" },
+    { id: 14, name: "Packing Tape", qty: 0, subCategory: "Tapes" },
+    { id: 15, name: "Body Tape Measure", qty: 0, subCategory: "Tape Measures" },
   ],
   "Printable Materials": [
-    { id: 20, name: "Quad Fold Brochures - English", qty: 1100 },
-    { id: 21, name: "Quad Fold Brochures - Spanish", qty: 900 },
-    { id: 22, name: "Patient Journey Packets - English", qty: 600 },
-    { id: 23, name: "Patient Journey Packets - Spanish", qty: 750 },
-    { id: 24, name: "Phlebolymphedema - LTA Sheet", qty: 1100 },
-    { id: 25, name: "Clinical Resource Guide (Binder)", qty: 10 },
-    { id: 26, name: "Tri-Fold Arm Brochure - English", qty: 1500 },
-    { id: 27, name: "Tri-Fold Arm Brochure - Spanish", qty: 1400 },
-    { id: 28, name: "Compression Therapy - Poster 24x18", qty: 0 },
-    { id: 29, name: "Great Vein - Poster 24x18", qty: 0 },
-    { id: 30, name: "LTA/Clinician Sign Up Sheet", qty: 0 },
-    { id: 31, name: "Lower Extremity Compression Order Form (Rx Pad)", qty: 0 },
-    { id: 32, name: "Upper Extremity Compression Order Form (Rx Pad)", qty: 0 },
-    { id: 33, name: "Clinical Measurement Guide (Rx Pad)", qty: 0 },
-    { id: 34, name: "Gramatan Envelopes", qty: 0 },
-    { id: 35, name: "Quickstart Guide Insert - Flex", qty: 0 },
-    { id: 36, name: "Quickstart Guide Insert - Standard", qty: 0 },
-    { id: 37, name: "Quickstart Guide Sizing Guide - Flex", qty: 0 },
-    { id: 38, name: "Quickstart Guide Sizing Guide - Standard", qty: 0 },
-    { id: 39, name: "Clinician Demo Kit Insert", qty: 0 },
+    { id: 20, name: "Quad Fold Brochures - English", qty: 1100, subCategory: "Brochures" },
+    { id: 21, name: "Quad Fold Brochures - Spanish", qty: 900, subCategory: "Brochures" },
+    { id: 22, name: "Patient Journey Packets - English", qty: 600, subCategory: "Educational Literature" },
+    { id: 23, name: "Patient Journey Packets - Spanish", qty: 750, subCategory: "Educational Literature" },
+    { id: 24, name: "Phlebolymphedema - LTA Sheet", qty: 1100, subCategory: "Educational Literature" },
+    { id: 25, name: "Clinical Resource Guide (Binder)", qty: 10, subCategory: "Educational Literature" },
+    { id: 26, name: "Tri-Fold Arm Brochure - English", qty: 1500, subCategory: "Brochures" },
+    { id: 27, name: "Tri-Fold Arm Brochure - Spanish", qty: 1400, subCategory: "Brochures" },
+    { id: 28, name: "Compression Therapy - Poster 24x18", qty: 0, subCategory: "Poster" },
+    { id: 29, name: "Great Vein - Poster 24x18", qty: 0, subCategory: "Poster" },
+    { id: 30, name: "LTA/Clinician Sign Up Sheet", qty: 0, subCategory: "Forms" },
+    { id: 31, name: "Lower Extremity Compression Order Form (Rx Pad)", qty: 0, subCategory: "Forms" },
+    { id: 32, name: "Upper Extremity Compression Order Form (Rx Pad)", qty: 0, subCategory: "Forms" },
+    { id: 33, name: "Clinical Measurement Guide (Rx Pad)", qty: 0, subCategory: "Forms" },
+    { id: 34, name: "Gramatan Envelopes", qty: 0, subCategory: "Envelopes" },
+    { id: 35, name: "Quickstart Guide Insert - Flex", qty: 0, subCategory: "Educational Literature" },
+    { id: 36, name: "Quickstart Guide Insert - Standard", qty: 0, subCategory: "Educational Literature" },
+    { id: 37, name: "Quickstart Guide Sizing Guide - Flex", qty: 0, subCategory: "Educational Literature" },
+    { id: 38, name: "Quickstart Guide Sizing Guide - Standard", qty: 0, subCategory: "Educational Literature" },
+    { id: 39, name: "Clinician Demo Kit Insert", qty: 0, subCategory: "Educational Literature" },
   ],
-  "Apparel — Men": [
-    { id: 40, name: "Scrubs Top (S)", qty: 0 },
-    { id: 41, name: "Scrubs Top (M)", qty: 5 },
-    { id: 42, name: "Scrubs Top (L)", qty: 1 },
-    { id: 43, name: "Scrubs Pants (XS)", qty: 3 },
-    { id: 44, name: "Scrubs Pants (S)", qty: 4 },
-    { id: 45, name: "Scrubs Pants (M)", qty: 4 },
-    { id: 46, name: "Scrubs Pants (L)", qty: 3 },
-    { id: 47, name: "Scrubs Pants (XL)", qty: 4 },
-    { id: 48, name: "Vest (S)", qty: 0 },
-    { id: 49, name: "Vest (M)", qty: 0 },
-    { id: 50, name: "Vest (L)", qty: 0 },
-    { id: 51, name: "Polos (S)", qty: 0 },
-    { id: 52, name: "Polos (M)", qty: 0 },
-    { id: 53, name: "Polos (L)", qty: 0 },
-    { id: 54, name: "1/4 zip (S)", qty: 0 },
-    { id: 55, name: "1/4 zip (M)", qty: 0 },
-    { id: 56, name: "1/4 zip (L)", qty: 0 },
+  "Apparel - Men": [
+    { id: 40, name: "Scrubs Top (S)", qty: 0, subCategory: "Scrubs" },
+    { id: 41, name: "Scrubs Top (M)", qty: 5, subCategory: "Scrubs" },
+    { id: 42, name: "Scrubs Top (L)", qty: 1, subCategory: "Scrubs" },
+    { id: 43, name: "Scrubs Pants (XS)", qty: 3, subCategory: "Scrubs" },
+    { id: 44, name: "Scrubs Pants (S)", qty: 4, subCategory: "Scrubs" },
+    { id: 45, name: "Scrubs Pants (M)", qty: 4, subCategory: "Scrubs" },
+    { id: 46, name: "Scrubs Pants (L)", qty: 3, subCategory: "Scrubs" },
+    { id: 47, name: "Scrubs Pants (XL)", qty: 4, subCategory: "Scrubs" },
+    { id: 48, name: "Vest (S)", qty: 0, subCategory: "Jackets" },
+    { id: 49, name: "Vest (M)", qty: 0, subCategory: "Jackets" },
+    { id: 50, name: "Vest (L)", qty: 0, subCategory: "Jackets" },
+    { id: 51, name: "Polos (S)", qty: 0, subCategory: "T- Shirts" },
+    { id: 52, name: "Polos (M)", qty: 0, subCategory: "T- Shirts" },
+    { id: 53, name: "Polos (L)", qty: 0, subCategory: "T- Shirts" },
+    { id: 54, name: "1/4 zip (S)", qty: 0, subCategory: "Jackets" },
+    { id: 55, name: "1/4 zip (M)", qty: 0, subCategory: "Jackets" },
+    { id: 56, name: "1/4 zip (L)", qty: 0, subCategory: "Jackets" },
   ],
-  "Apparel — Women": [
-    { id: 60, name: "Scrubs Top (XS)", qty: 2 },
-    { id: 61, name: "Scrubs Top (S)", qty: 0 },
-    { id: 62, name: "Scrubs Top (M)", qty: 8 },
-    { id: 63, name: "Scrubs Top (L)", qty: 0 },
-    { id: 64, name: "Scrubs Top (XL)", qty: 7 },
-    { id: 65, name: "Scrubs Pants (M)", qty: 7 },
-    { id: 66, name: "Scrubs Pants (S)", qty: 0 },
-    { id: 67, name: "Black tee (XS)", qty: 2 },
-    { id: 68, name: "Black tee (S)", qty: 3 },
-    { id: 69, name: "Black tee (M)", qty: 5 },
-    { id: 70, name: "Black tee (L)", qty: 2 },
-    { id: 71, name: "Vest (S)", qty: 0 },
-    { id: 72, name: "Vest (M)", qty: 0 },
-    { id: 73, name: "Vest (L)", qty: 0 },
-    { id: 74, name: "Polos (S)", qty: 0 },
-    { id: 75, name: "Polos (M)", qty: 0 },
-    { id: 76, name: "Polos (L)", qty: 0 },
-    { id: 77, name: "1/4 zip (S)", qty: 0 },
-    { id: 78, name: "1/4 zip (M)", qty: 0 },
-    { id: 79, name: "1/4 zip (L)", qty: 0 },
+  "Apparel - Women": [
+    { id: 60, name: "Scrubs Top (XS)", qty: 2, subCategory: "Scrubs" },
+    { id: 61, name: "Scrubs Top (S)", qty: 0, subCategory: "Scrubs" },
+    { id: 62, name: "Scrubs Top (M)", qty: 8, subCategory: "Scrubs" },
+    { id: 63, name: "Scrubs Top (L)", qty: 0, subCategory: "Scrubs" },
+    { id: 64, name: "Scrubs Top (XL)", qty: 7, subCategory: "Scrubs" },
+    { id: 65, name: "Scrubs Pants (M)", qty: 7, subCategory: "Scrubs" },
+    { id: 66, name: "Scrubs Pants (S)", qty: 0, subCategory: "Scrubs" },
+    { id: 67, name: "Black tee (XS)", qty: 2, subCategory: "T- Shirts" },
+    { id: 68, name: "Black tee (S)", qty: 3, subCategory: "T- Shirts" },
+    { id: 69, name: "Black tee (M)", qty: 5, subCategory: "T- Shirts" },
+    { id: 70, name: "Black tee (L)", qty: 2, subCategory: "T- Shirts" },
+    { id: 71, name: "Vest (S)", qty: 0, subCategory: "Jackets" },
+    { id: 72, name: "Vest (M)", qty: 0, subCategory: "Jackets" },
+    { id: 73, name: "Vest (L)", qty: 0, subCategory: "Jackets" },
+    { id: 74, name: "Polos (S)", qty: 0, subCategory: "T- Shirts" },
+    { id: 75, name: "Polos (M)", qty: 0, subCategory: "T- Shirts" },
+    { id: 76, name: "Polos (L)", qty: 0, subCategory: "T- Shirts" },
+    { id: 77, name: "1/4 zip (S)", qty: 0, subCategory: "Jackets" },
+    { id: 78, name: "1/4 zip (M)", qty: 0, subCategory: "Jackets" },
+    { id: 79, name: "1/4 zip (L)", qty: 0, subCategory: "Jackets" },
   ],
 };
 
 const CATEGORY_ICONS = {
   "Branded Merchandise": "",
   "Printable Materials": "",
-  "Apparel — Men": "",
-  "Apparel — Women": "",
+  "Apparel - Men": "",
+  "Apparel - Women": "",
 };
 
 const CATEGORY_COLORS = {
@@ -96,23 +96,98 @@ const CATEGORY_COLORS = {
   "Out of Stock": { bg: "#fff5f5", accent: "#ff4d4d", light: "#ff4d4d" },
   "Branded Merchandise": { bg: "#ffffff", accent: "#f6ac40", light: "#002639" },
   "Printable Materials": { bg: "#ffffff", accent: "#002639", light: "#002639" },
-  "Apparel — Men": { bg: "#ffffff", accent: "#54bfcf", light: "#002639" },
-  "Apparel — Women": { bg: "#ffffff", accent: "#002639", light: "#002639" },
+  "Apparel - Men": { bg: "#ffffff", accent: "#54bfcf", light: "#002639" },
+  "Apparel - Women": { bg: "#ffffff", accent: "#002639", light: "#002639" },
 };
 
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 // 👥 USERS LIST
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 const USERS = [
   { username: "admin", password: "Aerowrap@145" },
   { username: "sanat", password: "Aerowrap@123" },
 ];
 
-const CONFIG_VERSION = "1.2";
+const CONFIG_VERSION = "1.4";
 
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
+// 📦 ITEM CARD COMPONENT
+// -------------------------------------------------------------
+const ItemCard = ({ item, category, openDeduct, colors }) => {
+  const isLow = item.qty > 0 && item.qty < 20;
+  const isOut = item.qty === 0;
+  return (
+    <div
+      className="item-card"
+      style={{
+        background: "#ffffff",
+        border: `2px solid ${isOut || isLow ? "#ff4d4d" : "#54bfcf"}`,
+        borderRadius: 12,
+        padding: "18px 20px",
+        cursor: "pointer",
+        boxShadow: isOut || isLow ? "0 0 10px rgba(255, 77, 77, 0.2)" : "none"
+      }}
+      onClick={() => openDeduct(item, category)}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: "#002639", lineHeight: 1.3, flex: 1, paddingRight: 8 }}>{item.name}</div>
+        {isOut && <span style={{ background: "#ffffff", border: "1px solid #ff4d4d", color: "#ff4d4d", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 20, whiteSpace: "nowrap" }}>OUT</span>}
+        {isLow && <span style={{ background: "#ffffff", border: "1px solid #ff4d4d", color: "#ff4d4d", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 20, whiteSpace: "nowrap" }}>LOW</span>}
+      </div>
+      <div style={{ marginTop: 14, display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
+        <div>
+          <div className="qty-badge" style={{ color: isOut || isLow ? "#ff4d4d" : "#002639" }}>
+            {item.qty.toLocaleString()}
+          </div>
+          <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
+        </div>
+        <div style={{ background: "#ffffff", border: "1.5px solid #000000", color: "#000000", borderRadius: 8, padding: "6px 14px", fontSize: 12, fontWeight: 700 }}>
+          Update
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// -------------------------------------------------------------
+// 🏢 VENDOR CARD COMPONENT
+// -------------------------------------------------------------
+const VendorCard = ({ vendor, onEdit }) => {
+  return (
+    <div
+      className="item-card"
+      style={{
+        background: "#ffffff",
+        border: `2px solid #002639`,
+        borderRadius: 12,
+        padding: "18px 20px",
+        cursor: "pointer",
+      }}
+      onClick={() => onEdit(vendor)}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#002639", lineHeight: 1.3 }}>{vendor.company}</div>
+        <a
+          href={`mailto:${vendor.email}`}
+          onClick={(e) => e.stopPropagation()}
+          style={{ background: "#54bfcf", color: "#ffffff", borderRadius: "50%", width: 28, height: 28, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, textDecoration: "none" }}
+        >
+          ✉️
+        </a>
+      </div>
+      <div style={{ fontSize: 15, fontWeight: 600, color: "#002639", marginBottom: 4 }}>{vendor.name}</div>
+      <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 500, marginBottom: 16 }}>{vendor.email}</div>
+      <div style={{ borderTop: "1px solid #eee", paddingTop: 12 }}>
+        <div style={{ fontSize: 10, color: "#54bfcf", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>Products</div>
+        <div style={{ fontSize: 12, color: "#002639", lineHeight: 1.4 }}>{vendor.products}</div>
+      </div>
+    </div>
+  );
+};
+
+// -------------------------------------------------------------
 // 👕 APPAREL CARD COMPONENT
-// ─────────────────────────────────────────────────────────────
+// -------------------------------------------------------------
 const ApparelCard = ({ baseName, variants, category, openDeduct, colors }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -244,8 +319,19 @@ export default function App() {
   const [addStockQty, setAddStockQty] = useState(0);
   const [newItem, setNewItem] = useState({ name: "", qty: 0, category: "" });
   const [newCategory, setNewCategory] = useState("");
-  const [editingItem, setEditingItem] = useState(null); // {item, category}
+  const [editingItem, setEditingItem] = useState(null); // {item, category, newName, newQty, newSub}
   const [editingCategory, setEditingCategory] = useState(null); // category name
+  const [vendors, setVendors] = useState(() => {
+    const saved = localStorage.getItem("sunVendors");
+    const savedVersion = localStorage.getItem("sunInventoryVersion");
+    if (saved && savedVersion === CONFIG_VERSION) {
+      try { return JSON.parse(saved); } catch (e) { return []; }
+    }
+    return [];
+  });
+  const [vendorModal, setVendorModal] = useState(false);
+  const [editingVendor, setEditingVendor] = useState(null); // vendor object
+  const [newVendor, setNewVendor] = useState({ name: "", email: "", company: "", products: "" });
   const [toast, setToast] = useState(null);
   const [log, setLog] = useState(() => {
     const saved = localStorage.getItem("sunInventoryLog");
@@ -332,10 +418,10 @@ export default function App() {
   }, [nextIdState]);
 
   useEffect(() => {
-    localStorage.setItem("sunInventoryLog", JSON.stringify(log));
-  }, [log]);
+    localStorage.setItem("sunVendors", JSON.stringify(vendors));
+  }, [vendors]);
 
-  const categories = ["All", ...Object.keys(inventory), "Low Stock", "Out of Stock"];
+  const categories = ["All", ...Object.keys(inventory).sort((a, b) => a.localeCompare(b)), "Low Stock", "Out of Stock"];
 
   const showToast = (msg, type = "success") => {
     setToast({ msg, type });
@@ -402,7 +488,12 @@ export default function App() {
   const handleAddItem = () => {
     const cat = addItemModal || newItem.category;
     if (!newItem.name.trim() || !cat) return;
-    const item = { id: nextIdState, name: newItem.name.trim(), qty: parseInt(newItem.qty) || 0 };
+    const item = {
+      id: nextIdState,
+      name: newItem.name.trim(),
+      qty: parseInt(newItem.qty) || 0,
+      subCategory: newItem.subCategory ? newItem.subCategory.trim() : ""
+    };
     setNextIdState(prev => prev + 1);
     if (inventory[cat]) {
       setInventory(prev => ({ ...prev, [cat]: [...prev[cat], item] }));
@@ -411,7 +502,7 @@ export default function App() {
     }
     addToLog({ type: "added", item: item.name, qty: item.qty, category: cat });
     showToast(`Added "${item.name}" to ${cat}`);
-    setNewItem({ name: "", qty: 0, category: "" });
+    setNewItem({ name: "", qty: 0, category: "", subCategory: "" });
     setAddItemModal(null);
     setAddModal(false);
   };
@@ -439,12 +530,12 @@ export default function App() {
 
   const handleEditItem = () => {
     if (!editingItem) return;
-    const { item, category, newName, newQty } = editingItem;
+    const { item, category, newName, newQty, newSub } = editingItem;
     if (!newName.trim()) return;
 
     setInventory(prev => ({
       ...prev,
-      [category]: prev[category].map(i => i.id === item.id ? { ...i, name: newName.trim(), qty: parseInt(newQty) || 0 } : i)
+      [category]: prev[category].map(i => i.id === item.id ? { ...i, name: newName.trim(), qty: parseInt(newQty) || 0, subCategory: newSub ? newSub.trim() : "" } : i)
     }));
     showToast(`Updated ${newName}`);
     setEditingItem(null);
@@ -618,6 +709,29 @@ export default function App() {
     }
   };
 
+  const handleAddVendor = () => {
+    if (!newVendor.name || !newVendor.company) return;
+    const vendor = { ...newVendor, id: Date.now() };
+    setVendors(prev => [...prev, vendor]);
+    setNewVendor({ name: "", email: "", company: "", products: "" });
+    setVendorModal(false);
+    showToast(`Added ${vendor.company} as Vendor`);
+  };
+
+  const handleEditVendor = () => {
+    if (!editingVendor) return;
+    setVendors(prev => prev.map(v => v.id === editingVendor.id ? editingVendor : v));
+    setEditingVendor(null);
+    showToast(`Updated ${editingVendor.company}`);
+  };
+
+  const handleDeleteVendor = (id) => {
+    if (window.confirm("Remove this vendor?")) {
+      setVendors(prev => prev.filter(v => v.id !== id));
+      showToast("Vendor removed", "info");
+    }
+  };
+
   const lowStockItems = Object.entries(inventory).flatMap(([cat, items]) =>
     items.filter(i => i.qty < 20).map(i => ({ ...i, category: cat }))
   );
@@ -735,6 +849,9 @@ export default function App() {
               <button className="btn-ghost" style={{ background: activeTab === "Pending" ? "#54bfcf" : "transparent", color: "#ffffff", borderColor: "#54bfcf", fontSize: 13, position: "relative" }} onClick={() => setActiveTab("Pending")}>
                 Pending
                 {pendingOrders.length > 0 && <span style={{ position: "absolute", top: -8, right: -4, background: "#f6ac40", color: "#002639", fontSize: 10, fontWeight: 700, borderRadius: "50%", minWidth: "18px", height: "18px", display: "flex", alignItems: "center", justifyContent: "center" }}>{pendingOrders.length}</span>}
+              </button>
+              <button className="btn-ghost" style={{ background: activeTab === "Vendors" ? "#54bfcf" : "transparent", color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={() => setActiveTab("Vendors")}>
+                Vendors
               </button>
               <div className="brand-name" style={{ width: 1, background: "#54bfcf", height: 24, margin: "0 4px" }} />
               <button className="btn-ghost" style={{ color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={handleExport}>
@@ -862,101 +979,115 @@ export default function App() {
               })()}
 
               {/* REGULAR CATEGORY SECTIONS */}
-              {Object.entries(inventory).map(([category, items]) => {
-                if (activeCategory !== "All" && activeCategory !== category) return null;
-                if (activeCategory === "Out of Stock" || activeCategory === "Low Stock") return null;
-                const filtered = search ? items.filter(i => i.name.toLowerCase().includes(search.toLowerCase())) : items;
-                if (filtered.length === 0 && search) return null;
-                const colors = CATEGORY_COLORS[category] || { bg: "#ffffff", accent: "#002639", light: "#ffffff" };
+              {Object.entries(inventory)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([category, items]) => {
+                  if (activeCategory !== "All" && activeCategory !== category) return null;
+                  if (activeCategory === "Out of Stock" || activeCategory === "Low Stock") return null;
+                  const filtered = search ? items.filter(i => i.name.toLowerCase().includes(search.toLowerCase())) : items;
+                  if (filtered.length === 0 && search) return null;
+                  const colors = CATEGORY_COLORS[category] || { bg: "#ffffff", accent: "#002639", light: "#ffffff" };
+                  const sortedItems = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
 
-                return (
-                  <div key={category} style={{ marginBottom: 40 }}>
-                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, marginBottom: 16, flexWrap: "wrap" }}>
-                      <div style={{ flex: 1, minWidth: "200px" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
-                          <div style={{ fontWeight: 700, fontSize: 18, color: "#ffffff" }}>{category}</div>
-                          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                            <button onClick={() => setEditingCategory({ oldName: category, newName: category })} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>✏️</button>
-                            <button onClick={() => handleDeleteCategory(category)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>🗑️</button>
+                  return (
+                    <div key={category} style={{ marginBottom: 40 }}>
+                      <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+                        <div style={{ flex: 1, minWidth: "200px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+                            <div style={{ fontWeight: 700, fontSize: 18, color: "#ffffff" }}>{category}</div>
+                            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                              <button onClick={() => setEditingCategory({ oldName: category, newName: category })} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>✏️</button>
+                              <button onClick={() => handleDeleteCategory(category)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>🗑️</button>
+                            </div>
                           </div>
+                          <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600 }}>{filtered.length} items · {filtered.reduce((s, i) => s + i.qty, 0).toLocaleString()} units</div>
                         </div>
-                        <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600 }}>{filtered.length} items · {filtered.reduce((s, i) => s + i.qty, 0).toLocaleString()} units</div>
+                        <button
+                          className="btn-success"
+                          style={{ padding: "10px 18px", fontSize: 13, whiteSpace: "nowrap" }}
+                          onClick={() => { setAddItemModal(category); setNewItem({ name: "", qty: 0, category }); }}
+                        >
+                          + Add Item
+                        </button>
                       </div>
-                      <button
-                        className="btn-success"
-                        style={{ padding: "10px 18px", fontSize: 13, whiteSpace: "nowrap" }}
-                        onClick={() => { setAddItemModal(category); setNewItem({ name: "", qty: 0, category }); }}
-                      >
-                        + Add Item
-                      </button>
-                    </div>
 
-                    <div className="item-grid">
-                      {(() => {
-                        const isApparel = category.toLowerCase().includes("apparel");
-                        if (isApparel) {
-                          const grouped = {};
-                          filtered.forEach(item => {
-                            const match = item.name.match(/^(.*?)\s*\((.*?)\)$/);
-                            const bName = match ? match[1].trim() : item.name;
-                            const size = match ? match[2].trim() : null;
-                            if (!grouped[bName]) grouped[bName] = [];
-                            grouped[bName].push({ ...item, size });
+                      <div className="item-grid">
+                        {(() => {
+                          // Combined Subcategory & Apparel grouping logic
+                          const subGrouped = {};
+                          const ungrouped = [];
+                          sortedItems.forEach(item => {
+                            const sub = item.subCategory || "";
+                            if (sub) {
+                              if (!subGrouped[sub]) subGrouped[sub] = [];
+                              subGrouped[sub].push(item);
+                            } else {
+                              ungrouped.push(item);
+                            }
                           });
 
-                          return Object.entries(grouped).map(([baseName, variants]) => (
-                            <ApparelCard
-                              key={baseName}
-                              baseName={baseName}
-                              variants={variants}
-                              category={category}
-                              openDeduct={openDeduct}
-                              colors={colors}
-                            />
-                          ));
-                        }
+                          const renderGroup = (itemsToRender) => {
+                            const isApparel = category.toLowerCase().includes("apparel");
+                            if (isApparel) {
+                              const apparelGrouped = {};
+                              itemsToRender.forEach(item => {
+                                const match = item.name.match(/^(.*?)\s*\((.*?)\)$/);
+                                const bName = match ? match[1].trim() : item.name;
+                                const size = match ? match[2].trim() : null;
+                                if (!apparelGrouped[bName]) apparelGrouped[bName] = [];
+                                apparelGrouped[bName].push({ ...item, size });
+                              });
 
-                        return filtered.map(item => {
-                          const isLow = item.qty > 0 && item.qty < 20;
-                          const isOut = item.qty === 0;
-                          return (
-                            <div
-                              key={item.id}
-                              className="item-card"
-                              style={{
-                                background: "#ffffff",
-                                border: `2px solid ${isOut || isLow ? "#ff4d4d" : "#54bfcf"}`,
-                                borderRadius: 12,
-                                padding: "18px 20px",
-                                cursor: "pointer",
-                                boxShadow: isOut || isLow ? "0 0 10px rgba(255, 77, 77, 0.2)" : "none"
-                              }}
-                              onClick={() => openDeduct(item, category)}
-                            >
-                              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                                <div style={{ fontSize: 13, fontWeight: 600, color: "#002639", lineHeight: 1.3, flex: 1, paddingRight: 8 }}>{item.name}</div>
-                                {isOut && <span style={{ background: "#ffffff", border: "1px solid #ff4d4d", color: "#ff4d4d", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 20, whiteSpace: "nowrap" }}>OUT</span>}
-                                {isLow && <span style={{ background: "#ffffff", border: "1px solid #ff4d4d", color: "#ff4d4d", fontSize: 10, fontWeight: 700, padding: "2px 7px", borderRadius: 20, whiteSpace: "nowrap" }}>LOW</span>}
-                              </div>
-                              <div style={{ marginTop: 14, display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
-                                <div>
-                                  <div className="qty-badge" style={{ color: isOut || isLow ? "#ff4d4d" : "#002639" }}>
-                                    {item.qty.toLocaleString()}
+                              return Object.entries(apparelGrouped).map(([baseName, variants]) => (
+                                <ApparelCard
+                                  key={baseName}
+                                  baseName={baseName}
+                                  variants={variants}
+                                  category={category}
+                                  openDeduct={openDeduct}
+                                  colors={colors}
+                                />
+                              ));
+                            }
+                            return itemsToRender.map(item => (
+                              <ItemCard key={item.id} item={item} category={category} openDeduct={openDeduct} colors={colors} />
+                            ));
+                          };
+
+                          if (Object.keys(subGrouped).length > 0) {
+                            return (
+                              <div style={{ gridColumn: "1 / -1", display: "flex", flexDirection: "column", gap: 32 }}>
+                                {Object.entries(subGrouped)
+                                  .sort(([a], [b]) => a.localeCompare(b))
+                                  .map(([subCat, subItems]) => (
+                                    <div key={subCat}>
+                                      <div style={{ fontSize: 12, fontWeight: 800, color: "#54bfcf", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12, paddingBottom: 6, borderBottom: "1px solid rgba(84, 191, 207, 0.2)", display: "flex", alignItems: "center", gap: 10 }}>
+                                        {subCat}
+                                        <span style={{ fontSize: 10, color: "rgba(255,255,255,0.4)" }}>({subItems.length})</span>
+                                      </div>
+                                      <div className="item-grid">
+                                        {renderGroup(subItems)}
+                                      </div>
+                                    </div>
+                                  ))}
+                                {ungrouped.length > 0 && (
+                                  <div>
+                                    <div style={{ fontSize: 12, fontWeight: 800, color: "#54bfcf", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12, paddingBottom: 6, borderBottom: "1px solid rgba(84, 191, 207, 0.2)" }}>Others</div>
+                                    <div className="item-grid">
+                                      {renderGroup(ungrouped)}
+                                    </div>
                                   </div>
-                                  <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
-                                </div>
-                                <div style={{ background: "#ffffff", border: "1.5px solid #000000", color: "#000000", borderRadius: 8, padding: "6px 14px", fontSize: 12, fontWeight: 700 }}>
-                                  Update
-                                </div>
+                                )}
                               </div>
-                            </div>
-                          );
-                        });
-                      })()}
+                            );
+                          }
+
+                          return renderGroup(sortedItems);
+                        })()}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
 
               {/* ADD NEW CATEGORY */}
               <div style={{ background: "#ffffff", border: "2px dashed #54bfcf", borderRadius: 12, padding: "24px", marginTop: 12, textAlign: "center" }}>
@@ -967,7 +1098,7 @@ export default function App() {
                 </div>
               </div>
             </>
-          ) : (
+          ) : activeTab === "Pending" ? (
             <div style={{ background: "#ffffff", borderRadius: 16, padding: "24px", border: "2px solid #54bfcf", color: "#002639" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, flexWrap: "wrap", gap: 12 }}>
                 <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Pending Orders</h2>
@@ -998,6 +1129,35 @@ export default function App() {
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              {/* VENDORS VIEW */}
+              <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap", alignItems: "center" }}>
+                <div style={{ flex: 1, minWidth: "300px" }}>
+                  <input
+                    className="input-field"
+                    placeholder="Search vendors or companies..."
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                  />
+                </div>
+                <button className="btn-primary" style={{ background: "#002639", color: "#ffffff" }} onClick={() => setVendorModal(true)}>+ Add Vendor</button>
+              </div>
+
+              <div className="item-grid">
+                {vendors
+                  .filter(v =>
+                    v.name.toLowerCase().includes(search.toLowerCase()) ||
+                    v.company.toLowerCase().includes(search.toLowerCase()) ||
+                    v.products.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .sort((a, b) => a.company.localeCompare(b.company))
+                  .map(vendor => (
+                    <VendorCard key={vendor.id} vendor={vendor} onEdit={setEditingVendor} />
+                  ))
+                }
+              </div>
+            </>
           )}
         </div>
 
@@ -1152,7 +1312,7 @@ export default function App() {
                   <div style={{ fontSize: 12, color: "#54bfcf", marginTop: 2 }}>{deductModal.category}</div>
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>✏️</button>
+                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty, newSub: deductModal.item.subCategory || "" })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>✏️</button>
                   <button onClick={handleDeleteItem} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>🗑️</button>
                   <button onClick={() => setDeductModal(null)} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "#ffffff", marginLeft: 8 }}>×</button>
                 </div>
@@ -1200,6 +1360,10 @@ export default function App() {
                   <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Current Quantity</label>
                   <input className="input-field" type="number" value={editingItem.newQty} onChange={e => setEditingItem(p => ({ ...p, newQty: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Subcategory (Optional)</label>
+                  <input className="input-field" placeholder="e.g. Brochures" value={editingItem.newSub} onChange={e => setEditingItem(p => ({ ...p, newSub: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
+                </div>
                 <button className="btn-primary" style={{ background: "#54bfcf", color: "#ffffff", marginTop: 4 }} onClick={handleEditItem}>Save Changes</button>
               </div>
             </div>
@@ -1241,6 +1405,10 @@ export default function App() {
                 <div>
                   <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Starting Quantity</label>
                   <input className="input-field" type="number" min="0" value={newItem.qty} onChange={e => setNewItem(p => ({ ...p, qty: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
+                </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Subcategory (Optional)</label>
+                  <input className="input-field" placeholder="e.g. Brochures" value={newItem.subCategory} onChange={e => setNewItem(p => ({ ...p, subCategory: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
                 {!addItemModal && (
                   <div>
@@ -1300,6 +1468,62 @@ export default function App() {
         {toast && (
           <div className="toast" style={{ background: toast.type === "error" ? "#f6ac40" : toast.type === "info" ? "#54bfcf" : "#002639", color: "#ffffff" }}>
             {toast.msg}
+          </div>
+        )}
+        {/* VENDOR MODAL */}
+        {(vendorModal || editingVendor) && (
+          <div className="modal-backdrop" onClick={() => { setVendorModal(false); setEditingVendor(null); }}>
+            <div className="modal-box" style={{ background: "#002639", border: "2px solid #ffffff", color: "#ffffff" }} onClick={e => e.stopPropagation()}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22 }}>
+                <div style={{ fontWeight: 700, fontSize: 18 }}>{editingVendor ? "Edit Vendor" : "Add New Vendor"}</div>
+                <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                  {editingVendor && <button onClick={() => handleDeleteVendor(editingVendor.id)} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8 }}>🗑️</button>}
+                  <button onClick={() => { setVendorModal(false); setEditingVendor(null); }} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "#ffffff" }}>×</button>
+                </div>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Company Name *</label>
+                  <input
+                    className="input-field"
+                    value={editingVendor ? editingVendor.company : newVendor.company}
+                    onChange={e => editingVendor ? setEditingVendor(p => ({ ...p, company: e.target.value })) : setNewVendor(p => ({ ...p, company: e.target.value }))}
+                    style={{ background: "#002639", color: "#ffffff" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Contact Name *</label>
+                  <input
+                    className="input-field"
+                    value={editingVendor ? editingVendor.name : newVendor.name}
+                    onChange={e => editingVendor ? setEditingVendor(p => ({ ...p, name: e.target.value })) : setNewVendor(p => ({ ...p, name: e.target.value }))}
+                    style={{ background: "#002639", color: "#ffffff" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Contact Email</label>
+                  <input
+                    className="input-field"
+                    value={editingVendor ? editingVendor.email : newVendor.email}
+                    onChange={e => editingVendor ? setEditingVendor(p => ({ ...p, email: e.target.value })) : setNewVendor(p => ({ ...p, email: e.target.value }))}
+                    style={{ background: "#002639", color: "#ffffff" }}
+                  />
+                </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Products / Details</label>
+                  <textarea
+                    className="input-field"
+                    rows="3"
+                    value={editingVendor ? editingVendor.products : newVendor.products}
+                    onChange={e => editingVendor ? setEditingVendor(p => ({ ...p, products: e.target.value })) : setNewVendor(p => ({ ...p, products: e.target.value }))}
+                    style={{ background: "#002639", color: "#ffffff", resize: "none" }}
+                  />
+                </div>
+                <button className="btn-primary" style={{ marginTop: 4, background: "#54bfcf", color: "#ffffff" }} onClick={editingVendor ? handleEditVendor : handleAddVendor}>
+                  {editingVendor ? "Save Changes" : "Add Vendor"}
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </>)}
