@@ -235,6 +235,8 @@ export default function App() {
   const [addModal, setAddModal] = useState(false);
   const [addItemModal, setAddItemModal] = useState(null); // category name
   const [orderModal, setOrderModal] = useState(false);
+  const [receivingOrder, setReceivingOrder] = useState(null); // order object
+  const [deliveryDate, setDeliveryDate] = useState(new Date().toISOString().split('T')[0]);
   const [newOrder, setNewOrder] = useState({ itemName: "", qty: 0, date: new Date().toISOString().split('T')[0] });
   const [deductQty, setDeductQty] = useState(1);
   const [addStockQty, setAddStockQty] = useState(0);
@@ -306,7 +308,15 @@ export default function App() {
   };
 
   const addToLog = (entry) => {
-    setLog(prev => [{ ...entry, time: new Date().toLocaleTimeString() }, ...prev.slice(0, 49)]);
+    // Keep up to 1000 entries for better history retention
+    const timestamp = new Date().toLocaleString([], {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    setLog(prev => [{ ...entry, time: timestamp }, ...prev.slice(0, 999)]);
   };
 
   const filteredItems = useMemo(() => {
@@ -458,6 +468,35 @@ export default function App() {
     showToast("Export completed!");
   };
 
+  const handleExportLog = () => {
+    const rows = [
+      ["Timestamp", "Action", "Item", "Quantity", "Category", "Details"]
+    ];
+
+    log.forEach(entry => {
+      rows.push([
+        `"${entry.time}"`,
+        `"${entry.type.toUpperCase()}"`,
+        `"${entry.item.replace(/"/g, '""')}"`,
+        entry.qty || 0,
+        `"${entry.category || ''}"`,
+        `"${(entry.details || '').replace(/"/g, '""')}"`
+      ]);
+    });
+
+    const csvContent = rows.map(e => e.join(",")).join("\n");
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", `activity_log_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    showToast("Log exported!");
+  };
+
   const openDeduct = (item, category) => {
     setDeductModal({ item, category });
     setDeductQty(1);
@@ -473,8 +512,11 @@ export default function App() {
     setNewOrder({ itemName: "", qty: 0, date: new Date().toISOString().split('T')[0] });
   };
 
-  const handleReceiveOrder = (order) => {
+  const handleReceiveOrder = () => {
+    if (!receivingOrder) return;
+    const order = receivingOrder;
     const categoriesList = Object.keys(inventory);
+
     // Try to find the item in inventory to add stock
     let found = false;
     const newInv = { ...inventory };
@@ -490,13 +532,22 @@ export default function App() {
 
     if (!found) {
       showToast(`Item "${order.itemName}" not found in inventory. Add it first.`, "error");
+      setReceivingOrder(null);
       return;
     }
 
     setInventory(newInv);
     setPendingOrders(prev => prev.filter(o => o.id !== order.id));
-    addToLog({ type: "restock", item: order.itemName, qty: order.qty, category: "Received Order" });
+    // Log with the specific delivery date confirmed by user
+    addToLog({
+      type: "restock",
+      item: order.itemName,
+      qty: order.qty,
+      category: "Received Order",
+      details: `Delivered on: ${deliveryDate}`
+    });
     showToast(`Received ${order.qty} × ${order.itemName}`);
+    setReceivingOrder(null);
   };
 
   const handleDeleteOrder = (id) => {
@@ -826,7 +877,7 @@ export default function App() {
                         </div>
                       </div>
                       <div style={{ display: "flex", gap: 8 }}>
-                        <button className="btn-success" onClick={() => handleReceiveOrder(order)}>Receive Into Stock</button>
+                        <button className="btn-success" onClick={() => { setReceivingOrder(order); setDeliveryDate(new Date().toISOString().split('T')[0]); }}>Receive Into Stock</button>
                         <button className="btn-ghost" style={{ borderColor: "#ff4d4d", color: "#ff4d4d" }} onClick={() => handleDeleteOrder(order.id)}>Cancel</button>
                       </div>
                     </div>
@@ -859,6 +910,38 @@ export default function App() {
                   <input className="input-field" type="date" value={newOrder.date} onChange={e => setNewOrder(p => ({ ...p, date: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
                 <button className="btn-primary" style={{ background: "#54bfcf", marginTop: 8 }} onClick={handleAddOrder}>Log Order</button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* RECEIVE ORDER CONFIRMATION MODAL */}
+        {receivingOrder && (
+          <div className="modal-backdrop" onClick={() => setReceivingOrder(null)}>
+            <div className="modal-box" style={{ background: "#002639", border: "2px solid #ffffff", color: "#ffffff" }} onClick={e => e.stopPropagation()}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 22 }}>
+                <div style={{ fontWeight: 700, fontSize: 18 }}>Confirm Receipt</div>
+                <button onClick={() => setReceivingOrder(null)} style={{ background: "none", border: "none", fontSize: 22, cursor: "pointer", color: "#ffffff" }}>×</button>
+              </div>
+              <div style={{ marginBottom: 18 }}>
+                <div style={{ fontSize: 14, marginBottom: 8 }}>You are receiving:</div>
+                <div style={{ background: "rgba(84, 191, 207, 0.1)", border: "1.5px solid #54bfcf", borderRadius: 8, padding: "12px", marginBottom: 16 }}>
+                  <div style={{ fontWeight: 700, fontSize: 16 }}>{receivingOrder.itemName}</div>
+                  <div style={{ fontSize: 13, color: "#54bfcf" }}>Quantity: {receivingOrder.qty.toLocaleString()} units</div>
+                </div>
+
+                <label style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 8 }}>When were these delivered?</label>
+                <input
+                  className="input-field"
+                  type="date"
+                  value={deliveryDate}
+                  onChange={e => setDeliveryDate(e.target.value)}
+                  style={{ background: "#002639", color: "#ffffff" }}
+                />
+              </div>
+              <div style={{ display: "flex", gap: 10 }}>
+                <button className="btn-success" style={{ flex: 1 }} onClick={handleReceiveOrder}>Confirm & Add to Stock</button>
+                <button className="btn-ghost" style={{ borderColor: "#ffffff", color: "#ffffff" }} onClick={() => setReceivingOrder(null)}>Cancel</button>
               </div>
             </div>
           </div>
@@ -989,7 +1072,10 @@ export default function App() {
           <div className="modal-backdrop" onClick={() => setShowLog(false)}>
             <div className="modal-box" style={{ maxWidth: 500, maxHeight: "80vh", overflow: "hidden", display: "flex", flexDirection: "column" }} onClick={e => e.stopPropagation()}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
-                <div style={{ fontWeight: 700, fontSize: 18 }}>Activity Log</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ fontWeight: 700, fontSize: 18 }}>Activity Log</div>
+                  <button className="btn-ghost" style={{ padding: "4px 10px", fontSize: 11, background: "#002639", color: "#ffffff", borderColor: "#54bfcf" }} onClick={handleExportLog}>Download Excel (CSV)</button>
+                </div>
                 <button onClick={() => setShowLog(false)} style={{ background: "none", border: "none", fontSize: 22, cursor: "pointer", color: "#002639" }}>×</button>
               </div>
               {log.length === 0 ? (
@@ -1002,7 +1088,10 @@ export default function App() {
                         <span style={{ background: "#ffffff", border: `1px solid ${entry.type === "deduct" ? "#f6ac40" : "#54bfcf"}`, color: entry.type === "deduct" ? "#f6ac40" : "#54bfcf", fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 20, marginRight: 8 }}>
                           {entry.type === "deduct" ? "-" : "+"}{entry.qty}
                         </span>
-                        <span style={{ fontSize: 13, fontWeight: 500, color: "#002639" }}>{entry.item}</span>
+                        <div style={{ fontSize: 13, fontWeight: 500, color: "#002639" }}>
+                          {entry.item}
+                          {entry.details && <div style={{ fontSize: 10, color: "#54bfcf", marginTop: 2 }}>{entry.details}</div>}
+                        </div>
                       </div>
                       <span style={{ fontSize: 11, color: "#002639", fontWeight: 600 }}>{entry.time}</span>
                     </div>
