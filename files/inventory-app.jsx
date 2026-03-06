@@ -92,6 +92,8 @@ const CATEGORY_ICONS = {
 };
 
 const CATEGORY_COLORS = {
+  "Low Stock": { bg: "#fff5f5", accent: "#ff4d4d", light: "#ff4d4d" },
+  "Out of Stock": { bg: "#fff5f5", accent: "#ff4d4d", light: "#ff4d4d" },
   "Branded Merchandise": { bg: "#ffffff", accent: "#f6ac40", light: "#002639" },
   "Printable Materials": { bg: "#ffffff", accent: "#002639", light: "#002639" },
   "Apparel — Men": { bg: "#ffffff", accent: "#54bfcf", light: "#002639" },
@@ -260,7 +262,7 @@ export default function App() {
   useEffect(() => {
     const lowItems = Object.values(inventory).flat().filter(i => i.qty < 20);
     if (lowItems.length > 0) {
-      document.title = `(⚠️ ${lowItems.length}) Sun Inventory`;
+      document.title = `(${lowItems.length} Low) Sun Inventory`;
     } else {
       document.title = "Sun Inventory";
     }
@@ -300,7 +302,7 @@ export default function App() {
     localStorage.setItem("sunInventoryLog", JSON.stringify(log));
   }, [log]);
 
-  const categories = ["All", ...Object.keys(inventory)];
+  const categories = ["All", ...Object.keys(inventory), "Low Stock", "Out of Stock"];
 
   const showToast = (msg, type = "success") => {
     setToast({ msg, type });
@@ -566,35 +568,43 @@ export default function App() {
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; }
         ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: #ffffff; } ::-webkit-scrollbar-thumb { background: #54bfcf; border-radius: 3px; }
-        .item-card { transition: box-shadow 0.15s, transform 0.15s; }
+        .item-card { transition: box-shadow 0.15s, transform 0.15s; user-select: none; -webkit-tap-highlight-color: transparent; }
         .item-card:hover { box-shadow: 0 4px 20px rgba(0,38,57,0.1); transform: translateY(-1px); }
-        .btn-primary { background: #002639; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.15s; }
+        .btn-primary { background: #002639; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; transition: background 0.15s; }
         .btn-primary:hover { background: #54bfcf; }
-        .btn-danger { background: #f6ac40; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
-        .btn-success { background: #54bfcf; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
-        .btn-ghost { background: transparent; border: 1.5px solid #002639; padding: 8px 16px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 13px; color: #002639; transition: all 0.15s; }
+        .btn-danger { background: #f6ac40; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+        .btn-success { background: #54bfcf; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+        .btn-ghost { background: transparent; border: 1.5px solid #002639; padding: 10px 18px; border-radius: 8px; font-weight: 500; cursor: pointer; font-size: 13px; color: #002639; transition: all 0.15s; }
         .btn-ghost:hover { background: #002639; color: #ffffff; }
-        .cat-tab { padding: 7px 16px; border-radius: 20px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-        .input-field { border: 1.5px solid #54bfcf; border-radius: 8px; padding: 10px 14px; font-size: 14px; font-family: inherit; width: 100%; outline: none; transition: border-color 0.15s; }
+        .cat-tab { padding: 8px 18px; border-radius: 20px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+        .input-field { border: 1.5px solid #54bfcf; border-radius: 8px; padding: 12px 16px; font-size: 15px; font-family: inherit; width: 100%; outline: none; transition: border-color 0.15s; }
         .input-field:focus { border-color: #002639; }
-        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .modal-box { background: white; border-radius: 16px; padding: 28px; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
-        .toast { position: fixed; bottom: 28px; right: 28px; z-index: 200; padding: 14px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); animation: slideUp 0.3s ease; }
-        @keyframes slideUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-        .qty-badge { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-        .header-actions { display: flex; gap: 10px; }
-        .category-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+        .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 16px; }
+        .modal-box { background: white; border-radius: 16px; padding: 24px; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 200; padding: 14px 20px; border-radius: 10px; font-weight: 600; font-size: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); animation: slideUpToast 0.3s ease; width: calc(100% - 40px); max-width: 400px; text-align: center; }
+        @keyframes slideUpToast { from { opacity:0; transform: translate(-50%, 20px); } to { opacity:1; transform: translate(-50%, 0); } }
+        .qty-badge { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 500; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
+        .category-scroll { display: flex; gap: 8px; overflow-x: auto; padding: 4px 4px 12px 4px; -webkit-overflow-scrolling: touch; scroll-padding: 0 20px; }
         .category-scroll::-webkit-scrollbar { display: none; }
-        
-        @media (max-width: 768px) {
-          .stats-grid { grid-template-columns: 1fr; gap: 12px; }
-          .header-actions { gap: 6px; }
-          .header-actions button { padding: 6px 10px; font-size: 11px !important; }
-          .brand-name { display: none; }
-          .main-content { padding: 16px 16px !important; }
-          .stat-card { padding: 14px 18px !important; gap: 12px !important; }
-          .stat-value { font-size: 22px !important; }
+        .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+
+        @media (max-width: 900px) {
+          .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+          .stats-grid { grid-template-columns: 1fr; gap: 10px; }
+          .nav-header { height: auto !important; padding: 16px 0 !important; flex-direction: column !important; align-items: flex-start !important; gap: 16px; }
+          .header-actions { width: 100%; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+          .header-actions button { white-space: nowrap; flex-shrink: 0; padding: 8px 14px !important; }
+          .main-content { padding: 16px 12px !important; }
+          .stat-card { padding: 16px 20px !important; }
+          .stat-value { font-size: 24px !important; }
+          .item-grid { grid-template-columns: 1fr; gap: 12px; }
+          .modal-box { padding: 20px; width: 100%; margin: 0; }
+          .brand-name-full { font-size: 14px !important; letter-spacing: 1px !important; }
         }
       `}</style>
 
@@ -649,13 +659,13 @@ export default function App() {
       {/* MAIN APP (only shown when logged in) */}
       {loggedIn && (<>
         <div style={{ background: "#002639", color: "#002639", padding: "0 20px", position: "sticky", top: 0, zIndex: 50, borderBottom: "1px solid #54bfcf" }}>
-          <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+          <div className="nav-header" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "36px" }}>
                 <img src={logo} alt="Sun Scientific Logo" style={{ height: "100%", width: "auto", objectFit: "contain" }} />
               </div>
               <div className="brand-name">
-                <div style={{ fontWeight: 600, fontSize: 18, letterSpacing: "2.5px", color: "#ffffff", fontFamily: "sans-serif" }}>SUN SCIENTIFIC</div>
+                <div className="brand-name-full" style={{ fontWeight: 600, fontSize: 18, letterSpacing: "2.5px", color: "#ffffff", fontFamily: "sans-serif" }}>SUN SCIENTIFIC</div>
               </div>
             </div>
             <div className="header-actions">
@@ -664,14 +674,14 @@ export default function App() {
               </button>
               <button className="btn-ghost" style={{ background: activeTab === "Pending" ? "#54bfcf" : "transparent", color: "#ffffff", borderColor: "#54bfcf", fontSize: 13, position: "relative" }} onClick={() => setActiveTab("Pending")}>
                 Pending
-                {pendingOrders.length > 0 && <span style={{ position: "absolute", top: -8, right: -8, background: "#f6ac40", color: "#002639", fontSize: 10, fontWeight: 700, borderRadius: "50%", padding: "2px 6px" }}>{pendingOrders.length}</span>}
+                {pendingOrders.length > 0 && <span style={{ position: "absolute", top: -8, right: -4, background: "#f6ac40", color: "#002639", fontSize: 10, fontWeight: 700, borderRadius: "50%", minWidth: "18px", height: "18px", display: "flex", alignItems: "center", justifyContent: "center" }}>{pendingOrders.length}</span>}
               </button>
-              <div style={{ width: 1, background: "#54bfcf", height: 24, margin: "0 4px" }} />
+              <div className="brand-name" style={{ width: 1, background: "#54bfcf", height: 24, margin: "0 4px" }} />
               <button className="btn-ghost" style={{ color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={handleExport}>
-                <span className="brand-name">Export</span>
+                Export
               </button>
               <button className="btn-ghost" style={{ color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={() => setShowLog(true)}>
-                <span className="brand-name">Log</span>
+                Log
               </button>
               <button className="btn-primary" style={{ background: "#f6ac40", color: "#002639", padding: "8px 14px" }} onClick={() => setAddModal(true)}>
                 + Item
@@ -684,23 +694,6 @@ export default function App() {
         </div>
 
         <div className="main-content" style={{ maxWidth: 1200, margin: "0 auto", padding: "28px 28px" }}>
-          {/* LOW STOCK ALERT BANNER */}
-          {lowStockItems.length > 0 && (
-            <div style={{ background: "#f6ac40", borderRadius: 12, padding: "16px 20px", marginBottom: 24, border: "2px solid #002639", color: "#002639" }}>
-              <div style={{ fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                ⚠️ ACTION REQUIRED: {lowStockItems.length} Items Low or Out of Stock
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {lowStockItems.slice(0, 8).map(item => (
-                  <div key={item.id} style={{ background: "rgba(255,255,255,0.4)", padding: "4px 10px", borderRadius: 6, fontSize: 12, fontWeight: 600 }}>
-                    {item.name} ({item.qty})
-                  </div>
-                ))}
-                {lowStockItems.length > 8 && <div style={{ fontSize: 12, fontWeight: 600, padding: "4px 0" }}>+ {lowStockItems.length - 8} more...</div>}
-              </div>
-            </div>
-          )}
-
           {/* STATS */}
           <div className="stats-grid">
             {[
@@ -709,7 +702,6 @@ export default function App() {
               { label: "Low Stock Items", value: lowStockCount, icon: "", color: lowStockCount > 0 ? "#f6ac40" : "#54bfcf" },
             ].map(stat => (
               <div key={stat.label} className="stat-card" style={{ background: "#ffffff", borderRadius: 12, padding: "20px 24px", border: "2px solid #002639", display: "flex", alignItems: "center", gap: 16 }}>
-                {stat.icon && <div style={{ fontSize: 28 }}>{stat.icon}</div>}
                 <div>
                   <div className="stat-value" style={{ fontSize: 26, fontWeight: 700, color: stat.color }}>{stat.value}</div>
                   <div style={{ fontSize: 12, color: "#002639", fontWeight: 500, marginTop: 2 }}>{stat.label}</div>
@@ -719,14 +711,15 @@ export default function App() {
           </div>
 
           {/* SEARCH + FILTERS */}
-          <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap", alignItems: "center" }}>
-            <input
-              className="input-field"
-              placeholder="Search items..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              style={{ maxWidth: 280 }}
-            />
+          <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap", alignItems: "center" }}>
+            <div style={{ width: "100%", maxWidth: "100%", flex: "1 1 auto" }}>
+              <input
+                className="input-field"
+                placeholder="Search items..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+            </div>
             <div style={{ flex: 1, minWidth: "100%", overflowX: "hidden" }}>
               <div className="category-scroll">
                 {categories.map(cat => (
@@ -737,7 +730,8 @@ export default function App() {
                     style={{
                       background: activeCategory === cat ? "#002639" : "#ffffff",
                       color: activeCategory === cat ? "#ffffff" : "#002639",
-                      border: `2px solid #002639`,
+                      border: `2px solid ${cat.includes("Stock") ? "#ff4d4d" : "#002639"}`,
+                      boxShadow: activeCategory === cat && cat.includes("Stock") ? "0 0 10px rgba(255, 77, 77, 0.3)" : "none"
                     }}
                   >
                     {cat === "All" ? "All" : (CATEGORY_ICONS[cat] || "") + "" + cat.split(" — ")[0].split(" Material")[0]}
@@ -749,36 +743,93 @@ export default function App() {
 
           {activeTab === "Inventory" ? (
             <>
-              {/* CATEGORY SECTIONS */}
+              {/* VIRTUAL CATEGORIES FOR MONITORING */}
+              {(() => {
+                const outOfStock = Object.entries(inventory).flatMap(([cat, items]) =>
+                  items.filter(i => i.qty === 0).map(i => ({ ...i, originalCategory: cat }))
+                );
+                const lowStock = Object.entries(inventory).flatMap(([cat, items]) =>
+                  items.filter(i => i.qty > 0 && i.qty < 20).map(i => ({ ...i, originalCategory: cat }))
+                );
+
+                const sections = [];
+                if (activeCategory === "Out of Stock") {
+                  if (outOfStock.length > 0) sections.push({ name: "Out of Stock", items: outOfStock, color: "#ff4d4d" });
+                }
+                if (activeCategory === "Low Stock") {
+                  if (lowStock.length > 0) sections.push({ name: "Low Stock", items: lowStock, color: "#ff4d4d" });
+                }
+
+                return sections.map(section => (
+                  <div key={section.name} style={{ marginBottom: 32, padding: "20px", background: "rgba(255, 77, 77, 0.05)", border: `2px solid ${section.color}`, borderRadius: 16 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                      <div style={{ fontWeight: 700, fontSize: 18, color: section.color }}>{section.name}</div>
+                      <div style={{ fontSize: 12, color: section.color, fontWeight: 600 }}>{section.items.length} items requiring attention</div>
+                    </div>
+                    <div className="item-grid">
+                      {section.items.map(item => (
+                        <div
+                          key={`${section.name}-${item.id}`}
+                          className="item-card"
+                          style={{
+                            background: "#ffffff",
+                            border: `2px solid ${section.color}`,
+                            borderRadius: 12,
+                            padding: "18px 20px",
+                            cursor: "pointer",
+                            boxShadow: "0 0 10px rgba(255, 77, 77, 0.1)"
+                          }}
+                          onClick={() => openDeduct(item, item.originalCategory)}
+                        >
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                            <div style={{ fontSize: 13, fontWeight: 700, color: "#002639", lineHeight: 1.3, flex: 1, paddingRight: 8 }}>{item.name}</div>
+                            <span style={{ fontSize: 10, color: section.color, fontWeight: 800, textTransform: "uppercase" }}>{item.originalCategory.split(' ')[0]}</span>
+                          </div>
+                          <div style={{ marginTop: 14, display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
+                            <div>
+                              <div className="qty-badge" style={{ color: section.color }}>{item.qty}</div>
+                              <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
+                            </div>
+                            <div style={{ fontSize: 11, color: section.color, fontWeight: 700 }}>Restock</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ));
+              })()}
+
+              {/* REGULAR CATEGORY SECTIONS */}
               {Object.entries(inventory).map(([category, items]) => {
                 if (activeCategory !== "All" && activeCategory !== category) return null;
+                if (activeCategory === "Out of Stock" || activeCategory === "Low Stock") return null;
                 const filtered = search ? items.filter(i => i.name.toLowerCase().includes(search.toLowerCase())) : items;
                 if (filtered.length === 0 && search) return null;
                 const colors = CATEGORY_COLORS[category] || { bg: "#ffffff", accent: "#002639", light: "#ffffff" };
 
                 return (
-                  <div key={category} style={{ marginBottom: 32 }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                        <div>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <div style={{ fontWeight: 700, fontSize: 16 }}>{category}</div>
-                            <button onClick={() => setEditingCategory({ oldName: category, newName: category })} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14 }}>✏️</button>
-                            <button onClick={() => handleDeleteCategory(category)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14 }}>🗑️</button>
+                  <div key={category} style={{ marginBottom: 40 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, marginBottom: 16, flexWrap: "wrap" }}>
+                      <div style={{ flex: 1, minWidth: "200px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+                          <div style={{ fontWeight: 700, fontSize: 18, color: "#ffffff" }}>{category}</div>
+                          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                            <button onClick={() => setEditingCategory({ oldName: category, newName: category })} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>✏️</button>
+                            <button onClick={() => handleDeleteCategory(category)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 18, filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none", padding: "4px" }}>🗑️</button>
                           </div>
-                          <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600 }}>{filtered.length} items · {filtered.reduce((s, i) => s + i.qty, 0).toLocaleString()} units</div>
                         </div>
+                        <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600 }}>{filtered.length} items · {filtered.reduce((s, i) => s + i.qty, 0).toLocaleString()} units</div>
                       </div>
                       <button
-                        className="btn-ghost"
-                        style={{ fontSize: 12 }}
+                        className="btn-success"
+                        style={{ padding: "10px 18px", fontSize: 13, whiteSpace: "nowrap" }}
                         onClick={() => { setAddItemModal(category); setNewItem({ name: "", qty: 0, category }); }}
                       >
-                        + Add to this category
+                        + Add Item
                       </button>
                     </div>
 
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 12 }}>
+                    <div className="item-grid">
                       {(() => {
                         const isApparel = category.toLowerCase().includes("apparel");
                         if (isApparel) {
@@ -833,7 +884,7 @@ export default function App() {
                                   <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
                                 </div>
                                 <div style={{ background: "#ffffff", border: `1px solid ${colors.accent}`, color: colors.accent, borderRadius: 8, padding: "6px 10px", fontSize: 12, fontWeight: 600 }}>
-                                  Tap to update
+                                  Update
                                 </div>
                               </div>
                             </div>
@@ -846,38 +897,38 @@ export default function App() {
               })}
 
               {/* ADD NEW CATEGORY */}
-              <div style={{ background: "#ffffff", border: "2px dashed #002639", borderRadius: 12, padding: "20px 24px", marginTop: 12 }}>
-                <div style={{ fontWeight: 600, marginBottom: 12, color: "#002639", fontSize: 14 }}>+ Create New Category</div>
-                <div style={{ display: "flex", gap: 10 }}>
-                  <input className="input-field" placeholder="Category name..." value={newCategory} onChange={e => setNewCategory(e.target.value)} style={{ maxWidth: 300 }} onKeyDown={e => e.key === "Enter" && handleAddCategory()} />
-                  <button className="btn-primary" style={{ background: "#002639", color: "#ffffff" }} onClick={handleAddCategory}>Create</button>
+              <div style={{ background: "#ffffff", border: "2px dashed #54bfcf", borderRadius: 12, padding: "24px", marginTop: 12, textAlign: "center" }}>
+                <div style={{ fontWeight: 700, marginBottom: 16, color: "#002639", fontSize: 16 }}>+ Create New Category</div>
+                <div style={{ display: "flex", gap: 10, flexDirection: "column", maxWidth: 400, margin: "0 auto" }}>
+                  <input className="input-field" placeholder="e.g. New Seasonal Items" value={newCategory} onChange={e => setNewCategory(e.target.value)} onKeyDown={e => e.key === "Enter" && handleAddCategory()} />
+                  <button className="btn-primary" onClick={handleAddCategory}>Create Category</button>
                 </div>
               </div>
             </>
           ) : (
-            <div style={{ background: "#ffffff", borderRadius: 16, padding: "32px", border: "2px solid #54bfcf", color: "#002639" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>📦 Pending Orders</h2>
-                <button className="btn-primary" style={{ background: "#54bfcf" }} onClick={() => setOrderModal(true)}>+ Log New Order</button>
+            <div style={{ background: "#ffffff", borderRadius: 16, padding: "24px", border: "2px solid #54bfcf", color: "#002639" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24, flexWrap: "wrap", gap: 12 }}>
+                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Pending Orders</h2>
+                <button className="btn-primary" style={{ background: "#54bfcf" }} onClick={() => setOrderModal(true)}>+ Log Order</button>
               </div>
 
               {pendingOrders.length === 0 ? (
                 <div style={{ textAlign: "center", padding: "60px 0", color: "#54bfcf" }}>
-                  <div style={{ fontSize: 40, marginBottom: 12 }}>🚚</div>
+                  <div style={{ fontSize: 40, marginBottom: 12 }}>Shipment</div>
                   <div style={{ fontWeight: 600 }}>No orders pending shipment</div>
                 </div>
               ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {pendingOrders.map(order => (
-                    <div key={order.id} style={{ border: "1.5px solid #002639", borderRadius: 12, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div key={order.id} style={{ border: "1.5px solid #002639", borderRadius: 12, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>{order.itemName}</div>
                         <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600, marginTop: 4 }}>
                           Ordered on: {order.date} · <strong>{order.qty.toLocaleString()} units</strong>
                         </div>
                       </div>
-                      <div style={{ display: "flex", gap: 8 }}>
-                        <button className="btn-success" onClick={() => { setReceivingOrder(order); setDeliveryDate(new Date().toISOString().split('T')[0]); }}>Receive Into Stock</button>
+                      <div style={{ display: "flex", gap: 10, width: "100%", smWidth: "auto", justifyContent: "flex-end" }}>
+                        <button className="btn-success" style={{ flex: 1, smFlex: "initial" }} onClick={() => { setReceivingOrder(order); setDeliveryDate(new Date().toISOString().split('T')[0]); }}>Receive</button>
                         <button className="btn-ghost" style={{ borderColor: "#ff4d4d", color: "#ff4d4d" }} onClick={() => handleDeleteOrder(order.id)}>Cancel</button>
                       </div>
                     </div>
@@ -887,6 +938,7 @@ export default function App() {
             </div>
           )}
         </div>
+
 
         {/* ORDER MODAL */}
         {orderModal && (
@@ -957,8 +1009,8 @@ export default function App() {
                   <div style={{ fontSize: 12, color: "#54bfcf", marginTop: 2 }}>{deductModal.category}</div>
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer" }}>✏️</button>
-                  <button onClick={handleDeleteItem} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer" }}>🗑️</button>
+                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>✏️</button>
+                  <button onClick={handleDeleteItem} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>🗑️</button>
                   <button onClick={() => setDeductModal(null)} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "#ffffff", marginLeft: 8 }}>×</button>
                 </div>
               </div>
