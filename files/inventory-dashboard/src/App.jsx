@@ -427,6 +427,19 @@ export default function App() {
 
   const categories = ["All", ...Object.keys(inventory).sort((a, b) => a.localeCompare(b)), "Low Stock", "Out of Stock"];
 
+  const formatDisplayDate = (dateStr) => {
+    if (!dateStr) return "";
+    // dateStr is usually YYYY-MM-DD from input[type=date]
+    const [year, month, day] = dateStr.split("-").map(Number);
+    if (!year || !month || !day) return dateStr;
+    const d = new Date(year, month - 1, day);
+    return d.toLocaleDateString([], {
+      year: 'numeric',
+      month: 'short',
+      day: '2-digit'
+    }).toUpperCase();
+  };
+
   const showToast = (msg, type = "success") => {
     setToast({ msg, type });
     setTimeout(() => setToast(null), 2800);
@@ -434,14 +447,18 @@ export default function App() {
 
   const addToLog = (entry) => {
     // Keep up to 1000 entries for better history retention
-    const timestamp = new Date().toLocaleString([], {
+    const now = new Date();
+    const datePart = now.toLocaleDateString([], {
       year: 'numeric',
       month: 'short',
-      day: '2-digit',
+      day: '2-digit'
+    }).toUpperCase();
+    const timePart = now.toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit'
     });
-    setLog(prev => [{ ...entry, time: timestamp }, ...prev.slice(0, 999)]);
+    const timestamp = `${datePart}, ${timePart}`;
+    setLog(prev => [{ ...entry, time: timestamp, date: datePart }, ...prev.slice(0, 999)]);
   };
 
   const filteredItems = useMemo(() => {
@@ -669,7 +686,7 @@ export default function App() {
           item: order.itemName,
           qty: order.qty,
           category: "Received Order",
-          details: `Delivered on: ${deliveryDate}`
+          details: `Delivered on: ${formatDisplayDate(deliveryDate)}`
         });
         showToast(`Received ${order.qty} × ${order.itemName}`);
         setReceivingOrder(null);
@@ -701,7 +718,7 @@ export default function App() {
       item: order.itemName,
       qty: order.qty,
       category: "Received Order",
-      details: `Delivered on: ${deliveryDate}`
+      details: `Delivered on: ${formatDisplayDate(deliveryDate)}`
     });
     showToast(`Received ${order.qty} × ${order.itemName}`);
     setReceivingOrder(null);
@@ -1121,7 +1138,7 @@ export default function App() {
                       <div>
                         <div style={{ fontSize: 15, fontWeight: 700 }}>{order.itemName}</div>
                         <div style={{ fontSize: 12, color: "#54bfcf", fontWeight: 600, marginTop: 4 }}>
-                          Ordered on: {order.date} · <strong>{order.qty.toLocaleString()} units</strong>
+                          Ordered on: {formatDisplayDate(order.date)} · <strong>{order.qty.toLocaleString()} units</strong>
                         </div>
                       </div>
                       <div style={{ display: "flex", gap: 10, width: "100%", smWidth: "auto", justifyContent: "flex-end" }}>
@@ -1448,21 +1465,53 @@ export default function App() {
               {log.length === 0 ? (
                 <div style={{ textAlign: "center", color: "#002639", padding: "32px 0" }}>No activity yet</div>
               ) : (
-                <div style={{ overflowY: "auto", display: "flex", flexDirection: "column", gap: 8 }}>
-                  {log.map((entry, i) => (
-                    <div key={i} style={{ background: "#ffffff", border: "1px solid #54bfcf", borderRadius: 8, padding: "10px 14px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <div>
-                        <span style={{ background: "#ffffff", border: `1px solid ${entry.type === "deduct" ? "#f6ac40" : "#54bfcf"}`, color: entry.type === "deduct" ? "#f6ac40" : "#54bfcf", fontSize: 11, fontWeight: 700, padding: "2px 8px", borderRadius: 20, marginRight: 8 }}>
-                          {entry.type === "deduct" ? "-" : "+"}{entry.qty}
-                        </span>
-                        <div style={{ fontSize: 13, fontWeight: 500, color: "#002639" }}>
-                          {entry.item}
-                          {entry.details && <div style={{ fontSize: 10, color: "#54bfcf", marginTop: 2 }}>{entry.details}</div>}
+                <div style={{ overflowY: "auto", display: "flex", flexDirection: "column", gap: 16 }}>
+                  {(() => {
+                    const groups = {};
+                    log.forEach(entry => {
+                      // Use entry.date if available, otherwise try to extract it from entry.time
+                      const dateKey = entry.date || (entry.time.includes(',') ? entry.time.split(',')[0] : "Recent");
+                      if (!groups[dateKey]) groups[dateKey] = [];
+                      groups[dateKey].push(entry);
+                    });
+                    
+                    return Object.entries(groups).map(([date, entries]) => (
+                      <div key={date}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: "#54bfcf", textTransform: "uppercase", letterSpacing: 1, marginBottom: 10, paddingBottom: 4, borderBottom: "1.5px solid #eee" }}>
+                          {date}
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          {entries.map((entry, idx) => (
+                            <div key={idx} style={{ background: "#f8f9fa", border: "1px solid #e9ecef", borderRadius: 10, padding: "12px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                <span style={{ 
+                                  background: entry.type === "deduct" ? "#fff5f5" : "#f0fff4", 
+                                  border: `1px solid ${entry.type === "deduct" ? "#ff4d4d" : "#54bfcf"}`, 
+                                  color: entry.type === "deduct" ? "#ff4d4d" : "#54bfcf", 
+                                  fontSize: 11, 
+                                  fontWeight: 800, 
+                                  padding: "3px 10px", 
+                                  borderRadius: 20,
+                                  minWidth: "50px",
+                                  textAlign: "center"
+                                }}>
+                                  {entry.type === "deduct" ? "−" : entry.type === "delete" ? "✕" : "+"}{entry.qty || ""}
+                                </span>
+                                <div style={{ fontSize: 13, fontWeight: 600, color: "#002639" }}>
+                                  {entry.item}
+                                  {entry.details && <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 500, marginTop: 2 }}>{entry.details}</div>}
+                                  <div style={{ fontSize: 10, color: "#999", marginTop: 1 }}>{entry.category}</div>
+                                </div>
+                              </div>
+                              <span style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600, whiteSpace: "nowrap" }}>
+                                {entry.time.includes(',') ? entry.time.split(',')[1].trim() : entry.time}
+                              </span>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                      <span style={{ fontSize: 11, color: "#002639", fontWeight: 600 }}>{entry.time}</span>
-                    </div>
-                  ))}
+                    ));
+                  })()}
                 </div>
               )}
             </div>
