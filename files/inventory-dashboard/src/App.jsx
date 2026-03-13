@@ -3,84 +3,98 @@ import logo from "./assets/newlogo.png";
 
 const initialInventory = {
   "Branded Merchandise": [
-    { id: 1, name: "Keychains", qty: 125, subCategory: "Merch" },
-    { id: 2, name: "Blue Tote Bag (Standard)", qty: 150, subCategory: "Hand Bags" },
-    { id: 3, name: "Branded Tape", qty: 5, subCategory: "Tapes" },
-    { id: 4, name: "Pens", qty: 100, subCategory: "Merch" },
-    { id: 5, name: "Tape Measures", qty: 3050, subCategory: "Tape Measures" },
-    { id: 6, name: "Canvas White Tote Bag", qty: 2, subCategory: "Hand Bags" },
-    { id: 7, name: "Hats", qty: 12, subCategory: "Merch" },
-    { id: 8, name: "Bottle", qty: 7, subCategory: "Merch" },
-    { id: 9, name: "Blue Tote Bag (Dvx)", qty: 50, subCategory: "Hand Bags" },
-    { id: 10, name: "Luggage Tags", qty: 50, subCategory: "Merch" },
-    { id: 11, name: "Speakers", qty: 0, subCategory: "Merch" },
-    { id: 12, name: "Circular Stickers for Sealing", qty: 2, subCategory: "Stickers" },
-    { id: 13, name: "Die-Cut Leg Sticker", qty: 0, subCategory: "Stickers" },
-    { id: 14, name: "Packing Tape", qty: 0, subCategory: "Tapes" },
-    { id: 15, name: "Body Tape Measure", qty: 0, subCategory: "Tape Measures" },
+    { id: 1, name: "Keychains", qty: 200, min: 50, subCategory: "Merch" },
+    { id: 2, name: "Blue Tote Bag (Standard)", qty: 60, min: 50, subCategory: "Hand Bags" },
+    { id: 3, name: "Branded Tape", qty: 5, min: 2, subCategory: "Tapes" },
+    { id: 4, name: "Pens", qty: 290, min: 50, subCategory: "Merch" },
+    { id: 5, name: "Tape Measures", qty: 3050, min: 100, subCategory: "Tape Measures" },
+    { id: 6, name: "Canvas White Tote Bag", qty: 0, min: 5, subCategory: "Hand Bags" },
+    { id: 7, name: "Hats", qty: 12, min: 20, subCategory: "Merch" },
+    { id: 8, name: "Bottle", qty: 7, min: 10, subCategory: "Merch" },
+    { id: 9, name: "Blue Tote Bag (Dvx)", qty: 230, min: 50, subCategory: "Hand Bags" },
+    { id: 10, name: "Luggage Tags", qty: 27, min: 20, subCategory: "Merch" },
+    { id: 11, name: "Speakers", qty: 0, min: 10, subCategory: "Merch" },
+    { id: 12, name: "Circular Stickers for Sealing", qty: 80, min: 10, subCategory: "Stickers" },
+    { id: 13, name: "Die-Cut Leg Sticker", qty: 0, min: 2, subCategory: "Stickers" },
+    { id: 14, name: "Packing Tape", qty: 0, min: 2, subCategory: "Tapes" },
+    { id: 15, name: "Body Tape Measure", qty: 24, min: 10, subCategory: "Tape Measures" },
+    { id: 16, name: "Brochure Stand", qty: 126, min: 20, subCategory: "Stands" },
+    { id: 17, name: "Folders", qty: 600, min: 20, subCategory: "Merch" },
   ],
   "Printable Materials": [
-    { id: 20, name: "Quad Fold Brochures - English", qty: 1100, subCategory: "Brochures" },
-    { id: 21, name: "Quad Fold Brochures - Spanish", qty: 900, subCategory: "Brochures" },
-    { id: 22, name: "Patient Journey Packets - English", qty: 600, subCategory: "Educational Literature" },
-    { id: 23, name: "Patient Journey Packets - Spanish", qty: 750, subCategory: "Educational Literature" },
-    { id: 24, name: "Phlebolymphedema - LTA Sheet", qty: 1100, subCategory: "Educational Literature" },
-    { id: 25, name: "Clinical Resource Guide (Binder)", qty: 10, subCategory: "Educational Literature" },
-    { id: 26, name: "Tri-Fold Arm Brochure - English", qty: 1500, subCategory: "Brochures" },
-    { id: 27, name: "Tri-Fold Arm Brochure - Spanish", qty: 1400, subCategory: "Brochures" },
-    { id: 28, name: "Compression Therapy - Poster 24x18", qty: 0, subCategory: "Poster" },
-    { id: 29, name: "Great Vein - Poster 24x18", qty: 0, subCategory: "Poster" },
-    { id: 30, name: "LTA/Clinician Sign Up Sheet", qty: 0, subCategory: "Forms" },
-    { id: 31, name: "Lower Extremity Compression Order Form (Rx Pad)", qty: 0, subCategory: "Forms" },
-    { id: 32, name: "Upper Extremity Compression Order Form (Rx Pad)", qty: 0, subCategory: "Forms" },
-    { id: 33, name: "Clinical Measurement Guide (Rx Pad)", qty: 0, subCategory: "Forms" },
-    { id: 34, name: "Gramatan Envelopes", qty: 0, subCategory: "Envelopes" },
-    { id: 35, name: "Quickstart Guide Insert - Flex", qty: 0, subCategory: "Educational Literature" },
-    { id: 36, name: "Quickstart Guide Insert - Standard", qty: 0, subCategory: "Educational Literature" },
-    { id: 37, name: "Quickstart Guide Sizing Guide - Flex", qty: 0, subCategory: "Educational Literature" },
-    { id: 38, name: "Quickstart Guide Sizing Guide - Standard", qty: 0, subCategory: "Educational Literature" },
-    { id: 39, name: "Clinician Demo Kit Insert", qty: 0, subCategory: "Educational Literature" },
+    { id: 20, name: "Quad Fold Brochures - English", qty: 2670, min: 100, subCategory: "Brochures" },
+    { id: 21, name: "Quad Fold Brochures - Spanish", qty: 2370, min: 100, subCategory: "Brochures" },
+    { id: 22, name: "Patient Journey Packets - English", qty: 1320, min: 100, subCategory: "Educational Literature" },
+    { id: 23, name: "Patient Journey Packets - Spanish", qty: 2610, min: 100, subCategory: "Educational Literature" },
+    { id: 24, name: "Phlebolymphedema - LTA Sheet", qty: 100, min: 20, subCategory: "Educational Literature" },
+    { id: 25, name: "Clinical Resource Guide (Binder)", qty: 3, min: 2, subCategory: "Educational Literature" },
+    { id: 26, name: "Tri-Fold Arm Brochure - English", qty: 940, min: 100, subCategory: "Brochures" },
+    { id: 27, name: "Tri-Fold Arm Brochure - Spanish", qty: 1230, min: 100, subCategory: "Brochures" },
+    { id: 28, name: "Compression Therapy - Poster 24x18", qty: 58, min: 10, subCategory: "Poster" },
+    { id: 29, name: "Great Vein - Poster 24x18", qty: 0, min: 0, subCategory: "Poster" },
+    { id: 30, name: "LTA/Clinician Sign Up Sheet", qty: 100, min: 20, subCategory: "Forms" },
+    { id: 31, name: "Lower Extremity Compression Order Form (Rx Pad)", qty: 3250, min: 100, subCategory: "Forms" },
+    { id: 32, name: "Upper Extremity Compression Order Form (Rx Pad)", qty: 5680, min: 100, subCategory: "Forms" },
+    { id: 33, name: "Clinical Measurement Guide (Rx Pad)", qty: 100, min: 10, subCategory: "Forms" },
+    { id: 34, name: "Gramatan Envelopes", qty: 3700, min: 100, subCategory: "Envelopes" },
+    { id: 35, name: "Quickstart Guide Insert - Flex", qty: 0, min: 0, subCategory: "Educational Literature" },
+    { id: 36, name: "Quickstart Guide Insert - Standard", qty: 0, min: 0, subCategory: "Educational Literature" },
+    { id: 37, name: "Quickstart Guide Sizing Guide - Flex", qty: 0, min: 0, subCategory: "Educational Literature" },
+    { id: 38, name: "Quickstart Guide Sizing Guide - Standard", qty: 0, min: 0, subCategory: "Educational Literature" },
+    { id: 39, name: "Clinician Demo Kit Insert", qty: 0, min: 0, subCategory: "Educational Literature" },
   ],
   "Apparel - Men": [
-    { id: 40, name: "Scrubs Top (S)", qty: 0, subCategory: "Scrubs" },
-    { id: 41, name: "Scrubs Top (M)", qty: 5, subCategory: "Scrubs" },
-    { id: 42, name: "Scrubs Top (L)", qty: 1, subCategory: "Scrubs" },
-    { id: 43, name: "Scrubs Pants (XS)", qty: 3, subCategory: "Scrubs" },
-    { id: 44, name: "Scrubs Pants (S)", qty: 4, subCategory: "Scrubs" },
-    { id: 45, name: "Scrubs Pants (M)", qty: 4, subCategory: "Scrubs" },
-    { id: 46, name: "Scrubs Pants (L)", qty: 3, subCategory: "Scrubs" },
-    { id: 47, name: "Scrubs Pants (XL)", qty: 4, subCategory: "Scrubs" },
-    { id: 48, name: "Vest (S)", qty: 0, subCategory: "Jackets" },
-    { id: 49, name: "Vest (M)", qty: 0, subCategory: "Jackets" },
-    { id: 50, name: "Vest (L)", qty: 0, subCategory: "Jackets" },
-    { id: 51, name: "Polos (S)", qty: 0, subCategory: "T- Shirts" },
-    { id: 52, name: "Polos (M)", qty: 0, subCategory: "T- Shirts" },
-    { id: 53, name: "Polos (L)", qty: 0, subCategory: "T- Shirts" },
-    { id: 54, name: "1/4 zip (S)", qty: 0, subCategory: "Jackets" },
-    { id: 55, name: "1/4 zip (M)", qty: 0, subCategory: "Jackets" },
-    { id: 56, name: "1/4 zip (L)", qty: 0, subCategory: "Jackets" },
+    { id: 40, name: "Scrubs Top (S)", qty: 4, min: 2, subCategory: "Scrubs" },
+    { id: 41, name: "Scrubs Top (M)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 42, name: "Scrubs Top (L)", qty: 6, min: 2, subCategory: "Scrubs" },
+    { id: 43, name: "Scrubs Pants (XS)", qty: 0, min: 2, subCategory: "Scrubs" },
+    { id: 44, name: "Scrubs Pants (S)", qty: 8, min: 2, subCategory: "Scrubs" },
+    { id: 45, name: "Scrubs Pants (M)", qty: 5, min: 2, subCategory: "Scrubs" },
+    { id: 46, name: "Scrubs Pants (L)", qty: 0, min: 2, subCategory: "Scrubs" },
+    { id: 47, name: "Scrubs Pants (XL)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 48, name: "Vest (S)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 49, name: "Vest (M)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 50, name: "Vest (L)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 51, name: "Polos (S)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 52, name: "Polos (M)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 53, name: "Polos (L)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 54, name: "1/4 zip (S)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 55, name: "1/4 zip (M)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 56, name: "1/4 zip (L)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 57, name: "Black Jacket (S)", qty: 3, min: 2, subCategory: "Jackets" },
+    { id: 58, name: "Black Jacket (M)", qty: 1, min: 2, subCategory: "Jackets" },
+    { id: 59, name: "Black Jacket (L)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 80, name: "Black Jacket (XL)", qty: 8, min: 2, subCategory: "Jackets" },
   ],
   "Apparel - Women": [
-    { id: 60, name: "Scrubs Top (XS)", qty: 2, subCategory: "Scrubs" },
-    { id: 61, name: "Scrubs Top (S)", qty: 0, subCategory: "Scrubs" },
-    { id: 62, name: "Scrubs Top (M)", qty: 8, subCategory: "Scrubs" },
-    { id: 63, name: "Scrubs Top (L)", qty: 0, subCategory: "Scrubs" },
-    { id: 64, name: "Scrubs Top (XL)", qty: 7, subCategory: "Scrubs" },
-    { id: 65, name: "Scrubs Pants (M)", qty: 7, subCategory: "Scrubs" },
-    { id: 66, name: "Scrubs Pants (S)", qty: 0, subCategory: "Scrubs" },
-    { id: 67, name: "Black tee (XS)", qty: 2, subCategory: "T- Shirts" },
-    { id: 68, name: "Black tee (S)", qty: 3, subCategory: "T- Shirts" },
-    { id: 69, name: "Black tee (M)", qty: 5, subCategory: "T- Shirts" },
-    { id: 70, name: "Black tee (L)", qty: 2, subCategory: "T- Shirts" },
-    { id: 71, name: "Vest (S)", qty: 0, subCategory: "Jackets" },
-    { id: 72, name: "Vest (M)", qty: 0, subCategory: "Jackets" },
-    { id: 73, name: "Vest (L)", qty: 0, subCategory: "Jackets" },
-    { id: 74, name: "Polos (S)", qty: 0, subCategory: "T- Shirts" },
-    { id: 75, name: "Polos (M)", qty: 0, subCategory: "T- Shirts" },
-    { id: 76, name: "Polos (L)", qty: 0, subCategory: "T- Shirts" },
-    { id: 77, name: "1/4 zip (S)", qty: 0, subCategory: "Jackets" },
-    { id: 78, name: "1/4 zip (M)", qty: 0, subCategory: "Jackets" },
-    { id: 79, name: "1/4 zip (L)", qty: 0, subCategory: "Jackets" },
+    { id: 60, name: "Scrubs Top (XS)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 61, name: "Scrubs Top (S)", qty: 9, min: 2, subCategory: "Scrubs" },
+    { id: 62, name: "Scrubs Top (M)", qty: 8, min: 2, subCategory: "Scrubs" },
+    { id: 63, name: "Scrubs Top (L)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 64, name: "Scrubs Top (XL)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 65, name: "Scrubs Pants (XS)", qty: 10, min: 2, subCategory: "Scrubs" },
+    { id: 66, name: "Scrubs Pants (S)", qty: 1, min: 2, subCategory: "Scrubs" },
+    { id: 81, name: "Scrubs Pants (M)", qty: 10, min: 2, subCategory: "Scrubs" },
+    { id: 82, name: "Scrubs Pants (L)", qty: 15, min: 2, subCategory: "Scrubs" },
+    { id: 83, name: "Scrubs Pants (XL)", qty: 12, min: 2, subCategory: "Scrubs" },
+    { id: 67, name: "Black tee (XS)", qty: 10, min: 2, subCategory: "T- Shirts" },
+    { id: 68, name: "Black tee (S)", qty: 12, min: 2, subCategory: "T- Shirts" },
+    { id: 69, name: "Black tee (M)", qty: 15, min: 2, subCategory: "T- Shirts" },
+    { id: 70, name: "Black tee (L)", qty: 2, min: 2, subCategory: "T- Shirts" },
+    { id: 71, name: "Vest (S)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 72, name: "Vest (M)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 73, name: "Vest (L)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 74, name: "Polos (S)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 75, name: "Polos (M)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 76, name: "Polos (L)", qty: 0, min: 2, subCategory: "T- Shirts" },
+    { id: 77, name: "1/4 zip (S)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 78, name: "1/4 zip (M)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 79, name: "1/4 zip (L)", qty: 0, min: 2, subCategory: "Jackets" },
+    { id: 84, name: "Black Jacket (XS)", qty: 6, min: 2, subCategory: "Jackets" },
+    { id: 85, name: "Black Jacket (S)", qty: 8, min: 2, subCategory: "Jackets" },
+    { id: 86, name: "Black Jacket (M)", qty: 4, min: 2, subCategory: "Jackets" },
+    { id: 87, name: "Black Jacket (L)", qty: 4, min: 2, subCategory: "Jackets" },
+    { id: 88, name: "Black Jacket (XL)", qty: 9, min: 2, subCategory: "Jackets" },
   ],
 };
 
@@ -108,13 +122,13 @@ const USERS = [
   { username: "sanat", password: "Aerowrap@123" },
 ];
 
-const CONFIG_VERSION = "1.4";
+const CONFIG_VERSION = "1.5";
 
 // -------------------------------------------------------------
 // 📦 ITEM CARD COMPONENT
 // -------------------------------------------------------------
 const ItemCard = ({ item, category, openDeduct, colors }) => {
-  const isLow = item.qty > 0 && item.qty < 20;
+  const isLow = item.qty > 0 && item.qty < (item.min !== undefined ? item.min : 20);
   const isOut = item.qty === 0;
   return (
     <div
@@ -199,7 +213,7 @@ const ApparelCard = ({ baseName, variants, category, openDeduct, colors }) => {
   const selectedItem = variants[selectedIndex] || variants[0];
   if (!selectedItem) return null;
 
-  const isLow = selectedItem.qty > 0 && selectedItem.qty < 20;
+  const isLow = selectedItem.qty > 0 && selectedItem.qty < (selectedItem.min !== undefined ? selectedItem.min : 20);
   const isOut = selectedItem.qty === 0;
 
   return (
@@ -317,7 +331,7 @@ export default function App() {
   const [newOrder, setNewOrder] = useState({ itemName: "", qty: 0, date: new Date().toISOString().split('T')[0] });
   const [deductQty, setDeductQty] = useState(1);
   const [addStockQty, setAddStockQty] = useState(0);
-  const [newItem, setNewItem] = useState({ name: "", qty: 0, category: "" });
+  const [newItem, setNewItem] = useState({ name: "", qty: 0, min: 20, category: "", subCategory: "" });
   const [newCategory, setNewCategory] = useState("");
   const [editingItem, setEditingItem] = useState(null); // {item, category, newName, newQty, newSub}
   const [editingCategory, setEditingCategory] = useState(null); // category name
@@ -362,7 +376,7 @@ export default function App() {
 
   // Low Stock Tab Title Alert
   useEffect(() => {
-    const lowItems = Object.values(inventory).flat().filter(i => i.qty < 20);
+    const lowItems = Object.values(inventory).flat().filter(i => i.qty > 0 && i.qty < (i.min !== undefined ? i.min : 20));
     if (lowItems.length > 0) {
       document.title = `(${lowItems.length} Low) Sun Inventory`;
     } else {
@@ -457,8 +471,7 @@ export default function App() {
       hour: '2-digit',
       minute: '2-digit'
     });
-    const timestamp = `${datePart}, ${timePart}`;
-    setLog(prev => [{ ...entry, time: timestamp, date: datePart }, ...prev.slice(0, 999)]);
+    setLog(prev => [{ ...entry, time: timePart, date: datePart, fullTimestamp: `${datePart}, ${timePart}` }, ...prev.slice(0, 999)]);
   };
 
   const filteredItems = useMemo(() => {
@@ -474,7 +487,7 @@ export default function App() {
   }, [inventory, activeCategory, search]);
 
   const totalItems = Object.values(inventory).flat().length;
-  const lowStockCount = Object.values(inventory).flat().filter(i => i.qty < 20).length;
+  const lowStockCount = Object.values(inventory).flat().filter(i => i.qty > 0 && i.qty < (i.min !== undefined ? i.min : 20)).length;
   const totalUnits = Object.values(inventory).flat().reduce((s, i) => s + i.qty, 0);
 
   const handleDeduct = () => {
@@ -513,6 +526,7 @@ export default function App() {
       id: nextIdState,
       name: newItem.name.trim(),
       qty: parseInt(newItem.qty) || 0,
+      min: parseInt(newItem.min) !== undefined && !isNaN(parseInt(newItem.min)) ? parseInt(newItem.min) : 20,
       subCategory: newItem.subCategory ? newItem.subCategory.trim() : ""
     };
     setNextIdState(prev => prev + 1);
@@ -523,7 +537,7 @@ export default function App() {
     }
     addToLog({ type: "added", item: item.name, qty: item.qty, category: cat });
     showToast(`Added "${item.name}" to ${cat}`);
-    setNewItem({ name: "", qty: 0, category: "", subCategory: "" });
+    setNewItem({ name: "", qty: 0, min: 20, category: "", subCategory: "" });
     setAddItemModal(null);
     setAddModal(false);
   };
@@ -551,12 +565,12 @@ export default function App() {
 
   const handleEditItem = () => {
     if (!editingItem) return;
-    const { item, category, newName, newQty, newSub } = editingItem;
+    const { item, category, newName, newQty, newMin, newSub } = editingItem;
     if (!newName.trim()) return;
 
     setInventory(prev => ({
       ...prev,
-      [category]: prev[category].map(i => i.id === item.id ? { ...i, name: newName.trim(), qty: parseInt(newQty) || 0, subCategory: newSub ? newSub.trim() : "" } : i)
+      [category]: prev[category].map(i => i.id === item.id ? { ...i, name: newName.trim(), qty: parseInt(newQty) || 0, min: parseInt(newMin) !== undefined && !isNaN(parseInt(newMin)) ? parseInt(newMin) : 20, subCategory: newSub ? newSub.trim() : "" } : i)
     }));
     showToast(`Updated ${newName}`);
     setEditingItem(null);
@@ -587,41 +601,49 @@ export default function App() {
   };
 
   const handleExport = () => {
-    const rows = [
-      ["Category", "Item ID", "Item Name", "Quantity"]
-    ];
+    if (activeTab === "Vendors") {
+      const rows = [["Company", "Contact Person", "Email", "Products"]];
+      vendors.forEach(v => rows.push([`"${v.company}"`, `"${v.name}"`, `"${v.email}"`, `"${(v.products || '').replace(/"/g, '""')}"`]));
+      downloadCSV(rows, `vendors_list_${new Date().toISOString().split('T')[0]}.csv`);
+      return;
+    }
+    if (activeTab === "Pending") {
+      const rows = [["Item Name", "Quantity", "Date Ordered", "Status"]];
+      pendingOrders.forEach(o => rows.push([`"${o.itemName}"`, o.qty, `"${o.date}"`, `"${o.status}"`]));
+      downloadCSV(rows, `pending_orders_${new Date().toISOString().split('T')[0]}.csv`);
+      return;
+    }
 
+    const rows = [["Category", "Item ID", "Item Name", "Quantity", "Subcategory"]];
     Object.entries(inventory).forEach(([category, items]) => {
       items.forEach(item => {
-        rows.push([
-          `"${category}"`,
-          item.id,
-          `"${item.name.replace(/"/g, '""')}"`,
-          item.qty
-        ]);
+        rows.push([`"${category}"`, item.id, `"${item.name.replace(/"/g, '""')}"`, item.qty, `"${item.subCategory || ''}"`]);
       });
     });
+    downloadCSV(rows, `inventory_report_${new Date().toISOString().split('T')[0]}.csv`);
+    showToast("Export completed!");
+  };
 
+  const downloadCSV = (rows, filename) => {
     const csvContent = rows.map(e => e.join(",")).join("\n");
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
     const url = URL.createObjectURL(blob);
     link.setAttribute("href", url);
-    link.setAttribute("download", `inventory_report_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute("download", filename);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    showToast("Export completed!");
   };
 
   const handleExportLog = () => {
     const rows = [
-      ["Timestamp", "Action", "Item", "Quantity", "Category", "Details"]
+      ["Date", "Time", "Action", "Item", "Quantity", "Category", "Details"]
     ];
 
     log.forEach(entry => {
       rows.push([
+        `"${entry.date || ''}"`,
         `"${entry.time}"`,
         `"${entry.type.toUpperCase()}"`,
         `"${entry.item.replace(/"/g, '""')}"`,
@@ -631,16 +653,7 @@ export default function App() {
       ]);
     });
 
-    const csvContent = rows.map(e => e.join(",")).join("\n");
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement("a");
-    const url = URL.createObjectURL(blob);
-    link.setAttribute("href", url);
-    link.setAttribute("download", `activity_log_${new Date().toISOString().split('T')[0]}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
+    downloadCSV(rows, `activity_log_${new Date().toISOString().split('T')[0]}.csv`);
     showToast("Log exported!");
   };
 
@@ -754,7 +767,7 @@ export default function App() {
   };
 
   const lowStockItems = Object.entries(inventory).flatMap(([cat, items]) =>
-    items.filter(i => i.qty < 20).map(i => ({ ...i, category: cat }))
+    items.filter(i => i.qty > 0 && i.qty < (i.min !== undefined ? i.min : 20)).map(i => ({ ...i, category: cat }))
   );
 
   return (
@@ -876,7 +889,7 @@ export default function App() {
               </button>
               <div className="brand-name" style={{ width: 1, background: "#54bfcf", height: 24, margin: "0 4px" }} />
               <button className="btn-ghost" style={{ color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={handleExport}>
-                Export
+                Export {activeTab === "Inventory" ? "Items" : activeTab === "Vendors" ? "Vendors" : "Orders"}
               </button>
               <button className="btn-ghost" style={{ color: "#ffffff", borderColor: "#54bfcf", fontSize: 13 }} onClick={() => setShowLog(true)}>
                 Log
@@ -947,7 +960,7 @@ export default function App() {
                   items.filter(i => i.qty === 0).map(i => ({ ...i, originalCategory: cat }))
                 );
                 const lowStock = Object.entries(inventory).flatMap(([cat, items]) =>
-                  items.filter(i => i.qty > 0 && i.qty < 20).map(i => ({ ...i, originalCategory: cat }))
+                  items.filter(i => i.qty > 0 && i.qty < (i.min !== undefined ? i.min : 20)).map(i => ({ ...i, originalCategory: cat }))
                 );
 
                 const sections = [];
@@ -958,45 +971,60 @@ export default function App() {
                   if (lowStock.length > 0) sections.push({ name: "Low Stock", items: lowStock, color: "#ff4d4d" });
                 }
 
-                return sections.map(section => (
-                  <div key={section.name} style={{ marginBottom: 32, padding: "20px", background: "rgba(255, 77, 77, 0.05)", border: `2px solid ${section.color}`, borderRadius: 16 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                      <div style={{ fontWeight: 700, fontSize: 18, color: section.color }}>{section.name}</div>
-                      <div style={{ fontSize: 12, color: section.color, fontWeight: 600 }}>{section.items.length} items requiring attention</div>
-                    </div>
-                    <div className="item-grid">
-                      {section.items.map(item => (
-                        <div
-                          key={`${section.name}-${item.id}`}
-                          className="item-card"
-                          style={{
-                            background: "#ffffff",
-                            border: `2px solid ${section.color}`,
-                            borderRadius: 12,
-                            padding: "18px 20px",
-                            cursor: "pointer",
-                            boxShadow: "0 0 10px rgba(255, 77, 77, 0.1)"
-                          }}
-                          onClick={() => openDeduct(item, item.originalCategory)}
-                        >
-                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                            <div style={{ fontSize: 13, fontWeight: 700, color: "#002639", lineHeight: 1.3, flex: 1, paddingRight: 8 }}>{item.name}</div>
-                            <span style={{ fontSize: 10, color: section.color, fontWeight: 800, textTransform: "uppercase" }}>{item.originalCategory.split(' ')[0]}</span>
+                return sections.map(section => {
+                  const groupedItems = {};
+                  section.items.forEach(item => {
+                    if (!groupedItems[item.originalCategory]) groupedItems[item.originalCategory] = [];
+                    groupedItems[item.originalCategory].push(item);
+                  });
+
+                  return (
+                    <div key={section.name} style={{ marginBottom: 32, padding: "20px", background: "rgba(255, 77, 77, 0.05)", border: `2px solid ${section.color}`, borderRadius: 16 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+                        <div style={{ fontWeight: 700, fontSize: 18, color: section.color }}>{section.name}</div>
+                        <div style={{ fontSize: 12, color: section.color, fontWeight: 600 }}>{section.items.length} items requiring attention</div>
+                      </div>
+                      
+                      {Object.keys(groupedItems).sort().map(cat => (
+                        <div key={cat} style={{ marginBottom: 24 }}>
+                          <div style={{ fontSize: 16, fontWeight: 800, color: section.color, marginBottom: 12, borderBottom: `2px solid ${section.color}40`, paddingBottom: 6, textTransform: "uppercase", letterSpacing: 1 }}>
+                            {cat}
                           </div>
-                          <div style={{ marginTop: 14, display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
-                            <div>
-                              <div className="qty-badge" style={{ color: section.color }}>{item.qty}</div>
-                              <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
-                            </div>
-                            <div style={{ background: "#ffffff", border: "1.5px solid #000000", color: "#000000", borderRadius: 8, padding: "6px 14px", fontSize: 12, fontWeight: 700 }}>
-                              Update
-                            </div>
+                          <div className="item-grid">
+                            {groupedItems[cat].map(item => (
+                              <div
+                                key={`${section.name}-${item.id}`}
+                                className="item-card"
+                                style={{
+                                  background: "#ffffff",
+                                  border: `2px solid ${section.color}`,
+                                  borderRadius: 12,
+                                  padding: "18px 20px",
+                                  cursor: "pointer",
+                                  boxShadow: "0 0 10px rgba(255, 77, 77, 0.1)"
+                                }}
+                                onClick={() => openDeduct(item, item.originalCategory)}
+                              >
+                                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                                  <div style={{ fontSize: 13, fontWeight: 700, color: "#002639", lineHeight: 1.3, flex: 1 }}>{item.name}</div>
+                                </div>
+                                <div style={{ marginTop: 14, display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
+                                  <div>
+                                    <div className="qty-badge" style={{ color: section.color }}>{item.qty}</div>
+                                    <div style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600 }}>units</div>
+                                  </div>
+                                  <div style={{ background: "#ffffff", border: "1.5px solid #000000", color: "#000000", borderRadius: 8, padding: "6px 14px", fontSize: 12, fontWeight: 700 }}>
+                                    Update
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       ))}
                     </div>
-                  </div>
-                ));
+                  );
+                });
               })()}
 
               {/* REGULAR CATEGORY SECTIONS */}
@@ -1333,7 +1361,7 @@ export default function App() {
                   <div style={{ fontSize: 12, color: "#54bfcf", marginTop: 2 }}>{deductModal.category}</div>
                 </div>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty, newSub: deductModal.item.subCategory || "" })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>✏️</button>
+                  <button onClick={() => setEditingItem({ item: deductModal.item, category: deductModal.category, newName: deductModal.item.name, newQty: deductModal.item.qty, newMin: deductModal.item.min !== undefined ? deductModal.item.min : 20, newSub: deductModal.item.subCategory || "" })} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>✏️</button>
                   <button onClick={handleDeleteItem} style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", filter: "brightness(0) invert(1)", opacity: 0.8, textDecoration: "none" }}>🗑️</button>
                   <button onClick={() => setDeductModal(null)} style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", color: "#ffffff", marginLeft: 8 }}>×</button>
                 </div>
@@ -1382,6 +1410,10 @@ export default function App() {
                   <input className="input-field" type="number" value={editingItem.newQty} onChange={e => setEditingItem(p => ({ ...p, newQty: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
                 <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Low Stock Threshold</label>
+                  <input className="input-field" type="number" value={editingItem.newMin} onChange={e => setEditingItem(p => ({ ...p, newMin: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
+                </div>
+                <div>
                   <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Subcategory (Optional)</label>
                   <input className="input-field" placeholder="e.g. Brochures" value={editingItem.newSub} onChange={e => setEditingItem(p => ({ ...p, newSub: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
@@ -1426,6 +1458,10 @@ export default function App() {
                 <div>
                   <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Starting Quantity</label>
                   <input className="input-field" type="number" min="0" value={newItem.qty} onChange={e => setNewItem(p => ({ ...p, qty: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
+                </div>
+                <div>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Low Stock Threshold</label>
+                  <input className="input-field" type="number" min="0" value={newItem.min} onChange={e => setNewItem(p => ({ ...p, min: e.target.value }))} style={{ background: "#002639", color: "#ffffff" }} />
                 </div>
                 <div>
                   <label style={{ fontSize: 13, fontWeight: 600, color: "#ffffff", display: "block", marginBottom: 6 }}>Subcategory (Optional)</label>
@@ -1503,8 +1539,8 @@ export default function App() {
                                   <div style={{ fontSize: 10, color: "#999", marginTop: 1 }}>{entry.category}</div>
                                 </div>
                               </div>
-                              <span style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600, whiteSpace: "nowrap" }}>
-                                {entry.time.includes(',') ? entry.time.split(',')[1].trim() : entry.time}
+                              <span style={{ fontSize: 11, color: "#54bfcf", fontWeight: 600, whiteSpace: "nowrap", textAlign: "right" }}>
+                                {entry.time.includes(',') ? entry.time.split(',').pop().trim() : entry.time}
                               </span>
                             </div>
                           ))}
